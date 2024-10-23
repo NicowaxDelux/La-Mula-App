@@ -1,0 +1,12 @@
+version: '3.8'
+services:
+  lamulaapp-service:
+    container_name: lamulaapp-service
+    image: postgres:16.4-alpine
+    ports:
+      - "5433:5432"
+    environment:
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: 123456789
+      POSTGRES_DB: lamulaapp-db
+    restart: always
