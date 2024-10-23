@@ -1,8 +1,8 @@
 CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
 
 CREATE TABLE roles (
-    id_role UUID PRIMARY KEY,
-    name CHARACTER VARYING NOT NULL,
+    id_role UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+    name CHARACTER VARYING NOT NULL UNIQUE,
     description CHARACTER VARYING NOT NULL,
     created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
     created_by CHARACTER VARYING NOT NULL DEFAULT 'SYSTEM',
@@ -11,7 +11,7 @@ CREATE TABLE roles (
 );
 
 CREATE TABLE users (
-    id_user UUID PRIMARY KEY,
+    id_user UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
     id_role UUID NOT NULL REFERENCES roles(id_role),
     name CHARACTER VARYING NOT NULL,
     email CHARACTER VARYING NOT NULL,
@@ -24,7 +24,7 @@ CREATE TABLE users (
 );
 
 CREATE TABLE logins (
-    id_login UUID PRIMARY KEY,
+    id_login UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
     id_user UUID NOT NULL REFERENCES users(id_user),
     username CHARACTER VARYING NOT NULL,
     password CHARACTER VARYING NOT NULL,
@@ -35,8 +35,8 @@ CREATE TABLE logins (
 );
 
 CREATE TABLE order_statuses (
-    id_order_status UUID PRIMARY KEY,
-    name CHARACTER VARYING NOT NULL,
+    id_order_status UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+    name CHARACTER VARYING NOT NULL UNIQUE,
     description CHARACTER VARYING NOT NULL,
     created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
     created_by CHARACTER VARYING NOT NULL DEFAULT 'SYSTEM',
@@ -45,7 +45,7 @@ CREATE TABLE order_statuses (
 );
 
 CREATE TABLE orders (
-    id_order UUID PRIMARY KEY,
+    id_order UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
     id_user UUID NOT NULL REFERENCES users(id_user),
     id_order_status UUID NOT NULL REFERENCES order_statuses(id_order_status),
     order_code SERIAL NOT NULL,
@@ -57,8 +57,8 @@ CREATE TABLE orders (
 );
 
 CREATE TABLE coffee_types (
-    id_coffee_type UUID PRIMARY KEY,
-    name CHARACTER VARYING NOT NULL,
+    id_coffee_type UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+    name CHARACTER VARYING NOT NULL UNIQUE,
     description CHARACTER VARYING NOT NULL,
     created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
     created_by CHARACTER VARYING NOT NULL DEFAULT 'SYSTEM',
@@ -67,7 +67,7 @@ CREATE TABLE coffee_types (
 );
 
 CREATE TABLE products (
-    id_product UUID PRIMARY KEY,
+    id_product UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
     id_coffee_type UUID REFERENCES coffee_types(id_coffee_type),
     name CHARACTER VARYING NOT NULL,
     description CHARACTER VARYING NOT NULL,
@@ -80,7 +80,7 @@ CREATE TABLE products (
 );
 
 CREATE TABLE attachments (
-    id_attachment UUID PRIMARY KEY,
+    id_attachment UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
     name CHARACTER VARYING NOT NULL,
     content BYTEA NOT NULL,
     content_type CHARACTER VARYING NOT NULL,
@@ -91,7 +91,7 @@ CREATE TABLE attachments (
 );
 
 CREATE TABLE product_details (
-    id_product_detail UUID PRIMARY KEY,
+    id_product_detail UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
     id_attachment UUID NOT NULL REFERENCES attachments(id_attachment),
     name CHARACTER VARYING NOT NULL,
     package_size CHARACTER VARYING NOT NULL,
@@ -104,7 +104,7 @@ CREATE TABLE product_details (
 COMMENT ON COLUMN product_details.package_size IS '10 Kg';
 
 CREATE TABLE oder_details (
-    id_order_detail UUID PRIMARY KEY,
+    id_order_detail UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
     id_order UUID NOT NULL REFERENCES orders(id_order),
     id_product UUID NOT NULL REFERENCES products(id_product),
     quantity INTEGER NOT NULL,
