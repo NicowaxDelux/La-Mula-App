@@ -5,6 +5,7 @@ INSERT INTO roles (name, description) VALUES ('ADMIN', 'Es la persona que realiz
 INSERT INTO order_statuses (name, description) VALUES ('IN_PROGRESS', 'Estado inicial de la orden') ON CONFLICT DO NOTHING;
 INSERT INTO order_statuses (name, description) VALUES ('SENT', 'Productos enviados al cliente') ON CONFLICT DO NOTHING;
 INSERT INTO order_statuses (name, description) VALUES ('DELIVERED', 'Productos entregados al cliente') ON CONFLICT DO NOTHING;
+INSERT INTO order_statuses (name, description) VALUES ('REJECTED', 'Orden rechazada') ON CONFLICT DO NOTHING;
 
 INSERT INTO coffee_types (name, description) VALUES ('NATURE', 'NATURE') ON CONFLICT DO NOTHING;
 INSERT INTO coffee_types (name, description) VALUES ('BRESI', 'BRESI') ON CONFLICT DO NOTHING;

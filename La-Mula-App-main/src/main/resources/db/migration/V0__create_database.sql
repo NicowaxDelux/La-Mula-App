@@ -7,7 +7,7 @@ CREATE TABLE roles (
     created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
     created_by CHARACTER VARYING NOT NULL DEFAULT 'SYSTEM',
     updated_at TIMESTAMP,
-    updated_by TIMESTAMP
+    updated_by CHARACTER VARYING
 );
 
 CREATE TABLE users (
@@ -20,7 +20,7 @@ CREATE TABLE users (
     created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
     created_by CHARACTER VARYING NOT NULL DEFAULT 'SYSTEM',
     updated_at TIMESTAMP,
-    updated_by TIMESTAMP
+    updated_by CHARACTER VARYING
 );
 
 CREATE TABLE logins (
@@ -31,7 +31,7 @@ CREATE TABLE logins (
     created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
     created_by CHARACTER VARYING NOT NULL DEFAULT 'SYSTEM',
     updated_at TIMESTAMP,
-    updated_by TIMESTAMP
+    updated_by CHARACTER VARYING
 );
 
 CREATE TABLE order_statuses (
@@ -41,7 +41,7 @@ CREATE TABLE order_statuses (
     created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
     created_by CHARACTER VARYING NOT NULL DEFAULT 'SYSTEM',
     updated_at TIMESTAMP,
-    updated_by TIMESTAMP
+    updated_by CHARACTER VARYING
 );
 
 CREATE TABLE orders (
@@ -53,7 +53,7 @@ CREATE TABLE orders (
     created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
     created_by CHARACTER VARYING NOT NULL DEFAULT 'SYSTEM',
     updated_at TIMESTAMP,
-    updated_by TIMESTAMP
+    updated_by CHARACTER VARYING
 );
 
 CREATE TABLE coffee_types (
@@ -63,7 +63,7 @@ CREATE TABLE coffee_types (
     created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
     created_by CHARACTER VARYING NOT NULL DEFAULT 'SYSTEM',
     updated_at TIMESTAMP,
-    updated_by TIMESTAMP
+    updated_by CHARACTER VARYING
 );
 
 CREATE TABLE products (
@@ -76,7 +76,7 @@ CREATE TABLE products (
     created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
     created_by CHARACTER VARYING NOT NULL DEFAULT 'SYSTEM',
     updated_at TIMESTAMP,
-    updated_by TIMESTAMP
+    updated_by CHARACTER VARYING
 );
 
 CREATE TABLE attachments (
@@ -87,7 +87,7 @@ CREATE TABLE attachments (
     created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
     created_by CHARACTER VARYING NOT NULL DEFAULT 'SYSTEM',
     updated_at TIMESTAMP,
-    updated_by TIMESTAMP
+    updated_by CHARACTER VARYING
 );
 
 CREATE TABLE product_details (
@@ -98,7 +98,7 @@ CREATE TABLE product_details (
     created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
     created_by CHARACTER VARYING NOT NULL DEFAULT 'SYSTEM',
     updated_at TIMESTAMP,
-    updated_by TIMESTAMP
+    updated_by CHARACTER VARYING
 );
 
 COMMENT ON COLUMN product_details.package_size IS '10 Kg';
@@ -112,5 +112,5 @@ CREATE TABLE oder_details (
     created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
     created_by CHARACTER VARYING NOT NULL DEFAULT 'SYSTEM',
     updated_at TIMESTAMP,
-    updated_by TIMESTAMP
+    updated_by CHARACTER VARYING
 );
