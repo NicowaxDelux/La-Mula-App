@@ -1,18 +1,19 @@
 package com.lamulaapp.domain
 
 import jakarta.persistence.*
+import java.time.LocalDateTime
 import java.util.*
 
 @Entity
 @Table(name = "users")
 data class Users(
     @Id
-    @GeneratedValue(strategy = GenerationType.UUID)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     val id: UUID? = null,
 
-    @OneToOne(cascade = [CascadeType.ALL], fetch = FetchType.LAZY)
-    @JoinColumn(name = "id_role", referencedColumnName = "id_role")
-    val idrole: Roles? = null,
+    @OneToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "id_role", nullable = false)
+    val idRole: Roles? = null,
 
     @Column(name = "name")
     val name: String,
@@ -27,16 +28,15 @@ data class Users(
     val phone: Int,
 
     @Column( name = "create_at")
-    @Temporal( TemporalType.DATE)
-    var createdate: Date,
+    val createDate: LocalDateTime,
 
     @Column( name = "create_by")
-    var createby: String,
+    val createBy: String,
 
     @Column( name = "update_at")
-    @Temporal(TemporalType.DATE)
-    var updateat: Date,
+    val updateAt: LocalDateTime,
 
     @Column( name = "update_by")
-    var updateby: String,
+    val updateBy: String,
+
     )

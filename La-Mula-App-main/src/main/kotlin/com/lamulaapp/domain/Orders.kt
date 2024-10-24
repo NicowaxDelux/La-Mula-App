@@ -2,38 +2,36 @@ package com.lamulaapp.domain
 
 import jakarta.persistence.*
 import java.io.Serial
+import java.time.LocalDateTime
 import java.util.*
 
 data class Orders(
     @Id
-    @GeneratedValue(strategy = GenerationType.UUID)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     val id: UUID? = null,
 
     @OneToMany(cascade = [CascadeType.ALL], fetch = FetchType.LAZY)
-    @JoinColumn(name = "id_user", referencedColumnName = "id_user")
-    val iduser: Users? = null,
+    @JoinColumn(name = "id_user", nullable = false)
+    val idUser: Users? = null,
 
     @OneToMany(cascade = [CascadeType.ALL], fetch = FetchType.LAZY)
-    @JoinColumn(name = "id_oder_status", referencedColumnName = "id_order_status")
-    val idorderstatus: Order_Status? = null,
+    @JoinColumn(name = "id_oder_status", nullable = false)
+    val idOrderStatus: OrderStatus? = null,
 
-    val ordercode: Serial,
+    val orderCode: Serial,
 
     @Column(name = "total_cost")
-    val totalcost: Float,
+    val totalCost: Float,
 
     @Column( name = "create_at")
-    @Temporal( TemporalType.DATE)
-    var createdate: Date,
+    val createDate: LocalDateTime,
 
     @Column( name = "create_by")
-    var createby: String,
+    val createBy: String,
 
     @Column( name = "update_at")
-    @Temporal(TemporalType.DATE)
-    var updateat: Date,
+    val updateAt: LocalDateTime,
 
     @Column( name = "update_by")
-    var updateby: String,
-
-)
+    val updateBy: String,
+    )

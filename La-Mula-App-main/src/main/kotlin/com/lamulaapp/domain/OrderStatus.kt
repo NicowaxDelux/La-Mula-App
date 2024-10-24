@@ -1,13 +1,14 @@
 package com.lamulaapp.domain
 
 import jakarta.persistence.*
+import java.time.LocalDateTime
 import java.util.*
 
 @Entity
 @Table(name = "order_statuses")
-data class Order_Status(
+data class OrderStatus(
     @Id
-    @GeneratedValue(strategy = GenerationType.UUID)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     val id: UUID? = null,
 
     @Column(name = "name")
@@ -17,16 +18,14 @@ data class Order_Status(
     val description: String,
 
     @Column( name = "create_at")
-    @Temporal( TemporalType.DATE)
-    var createdate: Date,
+    val createDate: LocalDateTime,
 
     @Column( name = "create_by")
-    var createby: String,
+    val createBy: String,
 
     @Column( name = "update_at")
-    @Temporal(TemporalType.DATE)
-    var updateat: Date,
+    val updateAt: LocalDateTime,
 
     @Column( name = "update_by")
-    var updateby: String,
+    val updateBy: String,
     )

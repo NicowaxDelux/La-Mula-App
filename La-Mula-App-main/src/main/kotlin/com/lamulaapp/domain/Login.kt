@@ -1,36 +1,35 @@
 package com.lamulaapp.domain
 
 import jakarta.persistence.*
+import java.time.LocalDateTime
 import java.util.*
 
 @Entity
-@Table (name = "login")
+@Table (name = "logins")
 data class Login(
     @Id
     @GeneratedValue (strategy = GenerationType.IDENTITY)
     val id: UUID? = null,
 
-    @OneToOne(cascade = [CascadeType.ALL], fetch = FetchType.LAZY)
-    @JoinColumn(name = "id_user", referencedColumnName = "id_user")
-    val iduser: Users? = null,
+    @OneToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "id_user", nullable = false)
+    val idUser: Users? = null,
 
     @Column( name = "username")
-    val username: String,
+    val userName: String,
 
     @Column( name = "password")
-    val password: String,
+    val passWord: String,
 
     @Column( name = "create_at")
-    @Temporal( TemporalType.DATE)
-    var createdate: Date,
+    val createDate: LocalDateTime,
 
     @Column( name = "create_by")
-    var createby: String,
+    val createBy: String,
 
     @Column( name = "update_at")
-    @Temporal(TemporalType.DATE)
-    var updateat: Date,
+    val updateAt: LocalDateTime,
 
     @Column( name = "update_by")
-    var updateby: String,
+    val updateBy: String,
 )
