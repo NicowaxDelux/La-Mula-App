@@ -20,6 +20,7 @@ data class Orders(
     @JoinColumn(name = "id_oder_status", nullable = false)
     val idOrderStatus: OrderStatus? = null,
 
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     val orderCode: Serial,
 
     @Column(name = "total_cost")
