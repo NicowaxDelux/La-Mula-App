@@ -5,16 +5,18 @@ import java.io.Serial
 import java.time.LocalDateTime
 import java.util.*
 
+@Entity
+@Table(name = "orders")
 data class Orders(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     val id: UUID? = null,
 
-    @OneToMany(cascade = [CascadeType.ALL], fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "orders", fetch = FetchType.LAZY)
     @JoinColumn(name = "id_user", nullable = false)
     val idUser: Users? = null,
 
-    @OneToMany(cascade = [CascadeType.ALL], fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "orders", fetch = FetchType.LAZY)
     @JoinColumn(name = "id_oder_status", nullable = false)
     val idOrderStatus: OrderStatus? = null,
 
