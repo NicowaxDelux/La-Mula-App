@@ -14,7 +14,7 @@ fun Role.toDto() = RoleDto(
 )
 
 fun RoleDto.toEntity() = Role(
-    idRole = this.idRole,
+    idRole = idRole,
     name = this.name,
     description = this.description,
     createdAt = this.createdAt,
