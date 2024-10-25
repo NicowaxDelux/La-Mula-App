@@ -5,16 +5,16 @@ import java.time.LocalDateTime
 import java.util.*
 
 @Entity
-@Table(name = "coffee_types")
-data class CoffeeType(
-
+@Table(name = "roles")
+data class Role (
     @Id
-    @Column(name = "id_coffee_type")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    val idCoffeeType: UUID? = null,
+    val idRole: UUID? = null,
 
+    @Column(name = "name")
     val name: String,
 
+    @Column(name = "description")
     val description: String,
 
     @Column( name = "created_at")
@@ -27,5 +27,5 @@ data class CoffeeType(
     val updatedAt: LocalDateTime,
 
     @Column( name = "updated_by")
-    val updatedBy: String
-)
+    val updatedBy: String,
+    )

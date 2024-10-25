@@ -1,10 +1,10 @@
 package com.lamulaapp.repository
 
-import com.lamulaapp.domain.ProductDetail
+import com.lamulaapp.domain.Role
 import org.springframework.data.jpa.repository.JpaRepository
 import org.springframework.stereotype.Repository
-import java.util.UUID
+import java.util.*
 
 @Repository
-interface ProductDetailRepository : JpaRepository<ProductDetail, UUID> {
+interface RoleRepository: JpaRepository<Role, UUID> {
 }

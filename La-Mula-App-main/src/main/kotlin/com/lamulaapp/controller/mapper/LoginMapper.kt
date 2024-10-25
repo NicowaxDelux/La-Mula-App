@@ -4,23 +4,23 @@ import com.lamulaapp.domain.Login
 import com.lamulaapp.controller.dto.LoginDto
 
 fun Login.toDto(): LoginDto = LoginDto(
-    id = this.id,
-    userDto = this.idUser,
-    userName = this.userName,
-    passWord = this.passWord,
-    createDate = this.createDate,
-    createBy = this.createBy,
-    updateAt = this.updateAt,
-    updateBy = this.updateBy
+    id = this.idLogin,
+    userDto = this.user.toDto(),
+    username = this.username,
+    password = this.password,
+    createdAt = this.createdAt,
+    createdBy = this.createdBy,
+    updatedAt = this.updatedAt,
+    updatedBy = this.updatedBy
 )
 
 fun LoginDto.toEntity(): Login = Login(
-    id = this.id,
-    idUser = this.userDto,
-    userName = this.userName,
-    passWord = this.passWord,
-    createDate = this.createDate,
-    createBy = this.createBy,
-    updateAt = this.updateAt,
-    updateBy = this.updateBy
+    idLogin = this.id,
+    user = this.userDto?.toEntity()!!,
+    username = this.username,
+    password = this.password,
+    createdAt = this.createdAt,
+    createdBy = this.createdBy,
+    updatedAt = this.updatedAt,
+    updatedBy = this.updatedBy
 )

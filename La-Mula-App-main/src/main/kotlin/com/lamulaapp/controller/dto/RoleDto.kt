@@ -7,8 +7,8 @@ data class RoleDto(
     val idRole: UUID? = null,
     val name: String,
     val description: String,
-    val createDate: LocalDateTime,
-    val createBy: String,
-    val updateAt: LocalDateTime,
-    val updateBy: String,
+    val createdAt: LocalDateTime,
+    val createdBy: String,
+    val updatedAt: LocalDateTime,
+    val updatedBy: String
 )

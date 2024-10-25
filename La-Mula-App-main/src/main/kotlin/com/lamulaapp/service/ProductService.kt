@@ -1,7 +1,7 @@
 package com.lamulaapp.service
 
 import com.lamulaapp.controller.dto.ProductDto
-import com.lamulaapp.controller.mapper.toDTO
+import com.lamulaapp.controller.mapper.toDto
 import com.lamulaapp.controller.mapper.toEntity
 import com.lamulaapp.repository.ProductRepository
 import org.springframework.stereotype.Service
@@ -14,17 +14,17 @@ class ProductService(
 
     fun createProduct(productDto: ProductDto): ProductDto {
         val response = productRepository.save(productDto.toEntity())
-        return response.toDTO()
+        return response.toDto()
     }
 
     fun getProducts(): List<ProductDto> {
-        return productRepository.findAll().map { it.toDTO() }
+        return productRepository.findAll().map { it.toDto() }
     }
 
     fun getProductById(id: UUID): ProductDto? {
         val response = productRepository.findById(id)
         return if (response.isPresent) {
-            response.get().toDTO()
+            response.get().toDto()
         } else {
             null
         }
@@ -37,10 +37,10 @@ class ProductService(
             return null
         }
 
-        if (id != productDto.id) {
+        if (id != productDto.idProduct) {
             return null
         }
-        return productRepository.save(productDto.toEntity()).toDTO()
+        return productRepository.save(productDto.toEntity()).toDto()
     }
 
     fun deleteProduct(id: UUID) {

@@ -8,28 +8,27 @@ import java.util.*
 @Table (name = "logins")
 data class Login(
     @Id
+    @Column(name = "id_login")
     @GeneratedValue (strategy = GenerationType.IDENTITY)
-    val id: UUID? = null,
+    val idLogin: UUID? = null,
 
     @OneToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "id_user", nullable = false)
-    val idUser: Users? = null,
+    val user: User,
 
-    @Column( name = "username")
-    val userName: String,
+    val username: String,
 
-    @Column( name = "password")
-    val passWord: String,
+    val password: String,
 
-    @Column( name = "create_at")
-    val createDate: LocalDateTime,
+    @Column( name = "created_at")
+    val createdAt: LocalDateTime,
 
-    @Column( name = "create_by")
-    val createBy: String,
+    @Column( name = "created_by")
+    val createdBy: String,
 
-    @Column( name = "update_at")
-    val updateAt: LocalDateTime,
+    @Column( name = "updated_at")
+    val updatedAt: LocalDateTime,
 
-    @Column( name = "update_by")
-    val updateBy: String,
+    @Column( name = "updated_by")
+    val updatedBy: String
 )

@@ -1,7 +1,7 @@
 package com.lamulaapp.service
 
 import com.lamulaapp.controller.dto.OrderDetailDto
-import com.lamulaapp.controller.mapper.toDTO
+import com.lamulaapp.controller.mapper.toDto
 import com.lamulaapp.controller.mapper.toEntity
 import com.lamulaapp.repository.OrderDetailRepository
 import org.springframework.stereotype.Service
@@ -14,17 +14,17 @@ class OrderDetailService(
 
     fun createOrderDetail(orderDetailDto: OrderDetailDto): OrderDetailDto {
         val response = orderDetailRepository.save(orderDetailDto.toEntity())
-        return response.toDTO()
+        return response.toDto()
     }
 
     fun getOrderDetails(): List<OrderDetailDto> {
-        return orderDetailRepository.findAll().map { it.toDTO() }
+        return orderDetailRepository.findAll().map { it.toDto() }
     }
 
     fun getOrderDetailById(id: UUID): OrderDetailDto? {
         val response = orderDetailRepository.findById(id)
         return if (response.isPresent) {
-            response.get().toDTO()
+            response.get().toDto()
         } else {
             null
         }
@@ -37,10 +37,10 @@ class OrderDetailService(
             return null
         }
 
-        if (id != orderDetailDto.id) {
+        if (id != orderDetailDto.idOrderDetail) {
             return null
         }
-        return orderDetailRepository.save(orderDetailDto.toEntity()).toDTO()
+        return orderDetailRepository.save(orderDetailDto.toEntity()).toDto()
     }
 
     fun deleteOrderDetail(id: UUID) {

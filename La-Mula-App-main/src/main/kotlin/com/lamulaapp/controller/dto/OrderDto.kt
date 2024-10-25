@@ -1,19 +1,17 @@
 package com.lamulaapp.controller.dto
 
-import com.lamulaapp.domain.OrderStatus
-import com.lamulaapp.domain.Users
-import java.io.Serial
+import java.math.BigDecimal
 import java.time.LocalDateTime
 import java.util.UUID
 
 data class OrderDto(
-    val id: UUID? = null,
-    val userDto: Users? = null,
-    val orderStatusDto: OrderStatus? = null,
-    val orderCode: Serial,
-    val totalCost: Float,
-    val createDate: LocalDateTime,
-    val createBy: String,
-    val updateAt: LocalDateTime,
-    val updateBy: String,
+    val idOrder: UUID? = null,
+    val userDto: UserDto,
+    val orderStatusDto: OrderStatusDto,
+    val orderCode: Long? = null,
+    val totalCost: BigDecimal,
+    val createdAt: LocalDateTime,
+    val createdBy: String,
+    val updatedAt: LocalDateTime,
+    val updatedBy: String
 )

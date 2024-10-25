@@ -1,10 +1,10 @@
 package com.lamulaapp.controller.mapper
 
-import com.lamulaapp.controller.dto.OrderStatusDto
-import com.lamulaapp.domain.OrderStatus
+import com.lamulaapp.controller.dto.CoffeeTypeDto
+import com.lamulaapp.domain.CoffeeType
 
-fun OrderStatus.toDto() = OrderStatusDto(
-    idOrderStatus = this.idOrderStatus,
+fun CoffeeType.toDto() = CoffeeTypeDto(
+    idCoffeeType = this.idCoffeeType,
     name = this.name,
     description = this.description,
     createdAt = this.createdAt,
@@ -13,8 +13,8 @@ fun OrderStatus.toDto() = OrderStatusDto(
     updatedBy = this.updatedBy
 )
 
-fun OrderStatusDto.toEntity() = OrderStatus(
-    idOrderStatus = this.idOrderStatus,
+fun CoffeeTypeDto.toEntity() = CoffeeType(
+    idCoffeeType = this.idCoffeeType,
     name = this.name,
     description = this.description,
     createdAt = this.createdAt,

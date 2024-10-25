@@ -1,7 +1,7 @@
 package com.lamulaapp.service
 
 import com.lamulaapp.controller.dto.AttachmentDto
-import com.lamulaapp.controller.mapper.toDTO
+import com.lamulaapp.controller.mapper.toDto
 import com.lamulaapp.controller.mapper.toEntity
 import com.lamulaapp.repository.AttachmentRepository
 import org.springframework.stereotype.Service
@@ -14,17 +14,17 @@ class AttachmentService(
 
     fun createAttachment(attachmentDto: AttachmentDto): AttachmentDto {
         val response = attachmentRepository.save(attachmentDto.toEntity())
-        return response.toDTO()
+        return response.toDto()
     }
 
     fun getAttachments(): List<AttachmentDto> {
-        return attachmentRepository.findAll().map { it.toDTO() }
+        return attachmentRepository.findAll().map { it.toDto() }
     }
 
     fun getAttachmentById(id: UUID): AttachmentDto? {
         val response = attachmentRepository.findById(id)
         return if (response.isPresent) {
-            response.get().toDTO()
+            response.get().toDto()
         } else {
             null
         }
@@ -37,11 +37,11 @@ class AttachmentService(
             return null
         }
 
-        if (id != attachmentDto.id) {
+        if (id != attachmentDto.idAttachment) {
             return null
         }
 
-        return attachmentRepository.save(attachmentDto.toEntity()).toDTO()
+        return attachmentRepository.save(attachmentDto.toEntity()).toDto()
     }
 
     fun deleteAttachment(id: UUID) {

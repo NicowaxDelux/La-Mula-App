@@ -1,6 +1,7 @@
 package com.lamulaapp.domain
 
 import jakarta.persistence.*
+import java.math.BigDecimal
 import java.time.LocalDateTime
 import java.util.*
 
@@ -24,17 +25,17 @@ data class OrderDetail(
     val quantity: Int,
 
     @Column(name = "unit_cost", nullable = false)
-    val unitCost: Double,
+    val unitCost: BigDecimal,
 
-    @Column( name = "create_at")
-    val createDate: LocalDateTime,
+    @Column(name = "created_at")
+    val createdAt: LocalDateTime,
 
-    @Column( name = "create_by")
-    val createBy: String,
+    @Column(name = "created_by")
+    val createdBy: String,
 
-    @Column( name = "update_at")
-    val updateAt: LocalDateTime,
+    @Column(name = "updated_at")
+    val updatedAt: LocalDateTime,
 
-    @Column( name = "update_by")
-    val updateBy: String
+    @Column(name = "updated_by")
+    val updatedBy: String
 )
