@@ -1,6 +1,7 @@
 package com.lamulaapp.domain
 
 import jakarta.persistence.*
+import java.time.LocalDateTime
 import java.util.*
 
 @Entity
@@ -8,13 +9,23 @@ import java.util.*
 data class CoffeeType(
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_coffee_type", nullable = false)
     val idCoffeeType: UUID? = null,
 
-    @Column(name = "name", nullable = false)
     val name: String,
 
-    @Column(name = "description", nullable = false)
-    val description: String
+    val description: String,
+
+    @Column( name = "create_at")
+    val createDate: LocalDateTime,
+
+    @Column( name = "create_by")
+    val createBy: String,
+
+    @Column( name = "update_at")
+    val updateAt: LocalDateTime,
+
+    @Column( name = "update_by")
+    val updateBy: String
 )

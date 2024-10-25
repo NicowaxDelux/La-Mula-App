@@ -1,6 +1,7 @@
 package com.lamulaapp.domain
 
 import jakarta.persistence.*
+import java.time.LocalDateTime
 import java.util.*
 
 @Entity
@@ -8,23 +9,32 @@ import java.util.*
 data class Product(
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_product", nullable = false)
     val idProduct: UUID? = null,
 
-    @Column(name = "name", nullable = false)
     val name: String,
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "id_coffe_type", nullable = false)
+    @JoinColumn(name = "id_coffee_type", nullable = false)
     val coffeeType: CoffeeType,
 
-    @Column(name = "description", nullable = true)
     val description: String? = null,
 
     @Column(name = "unit_cost", nullable = false)
     val unitCost: Double,
 
-    @Column(name = "quantity", nullable = false)
-    val quantity: Int
+    val quantity: Int,
+
+    @Column( name = "create_at")
+    val createDate: LocalDateTime,
+
+    @Column( name = "create_by")
+    val createBy: String,
+
+    @Column( name = "update_at")
+    val updateAt: LocalDateTime,
+
+    @Column( name = "update_by")
+    val updateBy: String
 )
