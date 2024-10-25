@@ -1,6 +1,7 @@
 package com.lamulaapp.domain
 
 import jakarta.persistence.*
+import java.time.LocalDateTime
 import java.util.*
 
 @Entity
@@ -15,7 +16,7 @@ data class Product(
     val name: String,
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "id_coffe_type", nullable = false)
+    @JoinColumn(name = "id_coffee_type", nullable = false)
     val coffeeType: CoffeeType,
 
     val description: String? = null,
