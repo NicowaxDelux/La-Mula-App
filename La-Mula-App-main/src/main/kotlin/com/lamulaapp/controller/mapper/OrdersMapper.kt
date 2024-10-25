@@ -1,12 +1,12 @@
 package com.lamulaapp.controller.mapper
 
 import com.lamulaapp.domain.Orders
-import com.lamulaapp.controller.dto.OrdersDto
+import com.lamulaapp.controller.dto.OrderDto
 
-fun Orders.toDto(): OrdersDto = OrdersDto(
+fun Orders.toDto(): OrderDto = OrderDto(
     id = this.id,
-    idUser = this.idUser,
-    idOrderStatus = this.idOrderStatus,
+    userDto = this.idUser,
+    orderStatusDto = this.idOrderStatus,
     orderCode = this.orderCode,
     totalCost = this.totalCost,
     createDate = this.createDate,
@@ -15,10 +15,10 @@ fun Orders.toDto(): OrdersDto = OrdersDto(
     updateBy = this.updateBy
 )
 
-fun OrdersDto.toEntity(): Orders = Orders(
+fun OrderDto.toEntity(): Orders = Orders(
     id = this.id,
-    idUser = this.idUser,
-    idOrderStatus = this.idOrderStatus,
+    idUser = this.userDto,
+    idOrderStatus = this.orderStatusDto,
     orderCode = this.orderCode,
     totalCost = this.totalCost,
     createDate = this.createDate,
