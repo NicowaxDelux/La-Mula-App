@@ -6,26 +6,26 @@ import java.time.LocalDateTime
 import java.util.*
 
 @Entity
-@Table(name = "order_details")
-data class OrderDetail(
-
+@Table(name = "orders")
+data class Order(
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_order_detail", nullable = false)
-    val idOrderDetail: UUID? = null,
+    @Column(name = "id_order")
+    @GeneratedValue( strategy = GenerationType.IDENTITY)
+    val idOrder: UUID? = null,
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "id_order", nullable = false)
-    val order: Order,
+    @JoinColumn(name = "id_user", nullable = false)
+    val user: User,
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "id_product", nullable = false)
-    val product: Product,
+    @JoinColumn(name = "id_oder_status", nullable = false)
+    val orderStatus: OrderStatus,
 
-    val quantity: Int,
+    @Column(name = "order_code", unique = true, insertable = false, updatable = false)
+    val orderCode: Long? = null,
 
-    @Column(name = "unit_cost", nullable = false)
-    val unitCost: BigDecimal,
+    @Column(name = "total_cost")
+    val totalCost: BigDecimal,
 
     @Column( name = "created_at")
     val createdAt: LocalDateTime,

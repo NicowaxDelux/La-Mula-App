@@ -5,23 +5,28 @@ import java.time.LocalDateTime
 import java.util.*
 
 @Entity
-@Table(name = "attachments")
-data class Attachment(
-
+@Table(name = "users")
+data class User(
     @Id
+    @Column(name = "id_user")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_attachment")
-    val idAttachment: UUID? = null,
+    val idUser: UUID? = null,
 
+    @OneToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "id_role", nullable = false)
+    val role: Role? = null,
+
+    @Column(name = "name")
     val name: String,
 
-    @Lob
-    @Basic(fetch = FetchType.LAZY)
-    @Column(columnDefinition = "bytea", nullable = false)
-    val content: ByteArray,
+    @Column(name = "email")
+    val email: String,
 
-    @Column(name = "content_type", nullable = false)
-    val contentType: String,
+    @Column(name = "address")
+    val address: String,
+
+    @Column(name = "phone")
+    val phone: String,
 
     @Column( name = "created_at")
     val createdAt: LocalDateTime,

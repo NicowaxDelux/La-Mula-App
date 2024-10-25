@@ -1,13 +1,20 @@
 package com.lamulaapp.controller.dto
 
 import java.math.BigDecimal
-import java.util.UUID
+import java.time.LocalDateTime
+import java.util.*
 
 data class ProductDto(
     val idProduct: UUID? = null,
     val name: String,
-    val idCoffeeType: UUID,  // Usaremos el ID del CoffeeType en el DTO
+    val coffeeTypeDto: CoffeeTypeDto? = null,
+    val attachmentDto: AttachmentDto,
     val description: String? = null,
     val unitCost: BigDecimal,
-    val quantity: Int
+    val quantity: Int,
+    val packageSize: String,
+    val createdAt: LocalDateTime,
+    val createdBy: String,
+    val updatedAt: LocalDateTime,
+    val updatedBy: String
 )

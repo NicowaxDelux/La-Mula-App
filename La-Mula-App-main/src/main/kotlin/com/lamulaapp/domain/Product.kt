@@ -14,9 +14,9 @@ data class Product(
     @Column(name = "id_product")
     val idProduct: UUID? = null,
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "id_coffee_type", nullable = false)
-    val coffeeType: CoffeeType,
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "id_coffee_type")
+    val coffeeType: CoffeeType? = null,
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "id_attachment", nullable = false)
@@ -34,15 +34,15 @@ data class Product(
     @Column(name = "package_size", nullable = false)
     val packageSize: String,
 
-    @Column( name = "create_at")
-    val createDate: LocalDateTime,
+    @Column( name = "created_at")
+    val createdAt: LocalDateTime,
 
-    @Column( name = "create_by")
-    val createBy: String,
+    @Column( name = "created_by")
+    val createdBy: String,
 
-    @Column( name = "update_at")
-    val updateAt: LocalDateTime,
+    @Column( name = "updated_at")
+    val updatedAt: LocalDateTime,
 
-    @Column( name = "update_by")
-    val updateBy: String
+    @Column( name = "updated_by")
+    val updatedBy: String
 )
