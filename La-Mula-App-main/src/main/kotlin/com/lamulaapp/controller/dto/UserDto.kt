@@ -1,12 +1,11 @@
 package com.lamulaapp.controller.dto
 
-import com.lamulaapp.domain.Roles
 import java.time.LocalDateTime
 import java.util.UUID
 
-data class UsersDto(
+data class UserDto(
     val id: UUID? = null,
-    val idRole: Roles? = null,
+    val roleDto: RoleDto? = null,
     val name: String,
     val email: String,
     val address: String,

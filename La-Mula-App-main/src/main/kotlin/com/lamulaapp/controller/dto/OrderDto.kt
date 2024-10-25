@@ -6,10 +6,10 @@ import java.io.Serial
 import java.time.LocalDateTime
 import java.util.UUID
 
-data class OrdersDto(
+data class OrderDto(
     val id: UUID? = null,
-    val idUser: Users? = null,
-    val idOrderStatus: OrderStatus? = null,
+    val userDto: Users? = null,
+    val orderStatusDto: OrderStatus? = null,
     val orderCode: Serial,
     val totalCost: Float,
     val createDate: LocalDateTime,
