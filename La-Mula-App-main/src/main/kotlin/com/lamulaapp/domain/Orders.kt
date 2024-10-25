@@ -1,30 +1,30 @@
 package com.lamulaapp.domain
 
 import jakarta.persistence.*
-import java.io.Serial
+import java.math.BigDecimal
 import java.time.LocalDateTime
 import java.util.*
 
 @Entity
 @Table(name = "orders")
-data class Orders(
+data class Order(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     val id: UUID? = null,
 
-    @OneToMany(mappedBy = "orders", fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "id_user", nullable = false)
-    val idUser: Users? = null,
+    val idUser: User,
 
-    @OneToMany(mappedBy = "orders", fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "id_oder_status", nullable = false)
-    val idOrderStatus: OrderStatus? = null,
+    val idOrderStatus: OrderStatus,
 
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    val orderCode: Serial,
+    @Column(name = "order_code", unique = true, insertable = false, updatable = false)
+    val orderCode: Long? = null,
 
     @Column(name = "total_cost")
-    val totalCost: Float,
+    val totalCost: BigDecimal,
 
     @Column( name = "create_at")
     val createDate: LocalDateTime,
@@ -36,5 +36,5 @@ data class Orders(
     val updateAt: LocalDateTime,
 
     @Column( name = "update_by")
-    val updateBy: String,
-    )
+    val updateBy: String
+)

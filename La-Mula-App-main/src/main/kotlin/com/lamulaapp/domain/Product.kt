@@ -1,6 +1,7 @@
 package com.lamulaapp.domain
 
 import jakarta.persistence.*
+import java.math.BigDecimal
 import java.time.LocalDateTime
 import java.util.*
 
@@ -10,21 +11,28 @@ data class Product(
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_product", nullable = false)
+    @Column(name = "id_product")
     val idProduct: UUID? = null,
-
-    val name: String,
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "id_coffee_type", nullable = false)
     val coffeeType: CoffeeType,
 
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "id_attachment", nullable = false)
+    val attachment: Attachment,
+
+    val name: String,
+
     val description: String? = null,
 
     @Column(name = "unit_cost", nullable = false)
-    val unitCost: Double,
+    val unitCost: BigDecimal,
 
     val quantity: Int,
+
+    @Column(name = "package_size", nullable = false)
+    val packageSize: String,
 
     @Column( name = "create_at")
     val createDate: LocalDateTime,

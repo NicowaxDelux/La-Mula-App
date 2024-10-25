@@ -10,7 +10,7 @@ data class Attachment(
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_attachment", nullable = false)
+    @Column(name = "id_attachment")
     val idAttachment: UUID? = null,
 
     val name: String,

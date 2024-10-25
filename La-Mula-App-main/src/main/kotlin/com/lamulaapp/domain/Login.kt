@@ -13,13 +13,11 @@ data class Login(
 
     @OneToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "id_user", nullable = false)
-    val idUser: Users? = null,
+    val idUser: User,
 
-    @Column( name = "username")
-    val userName: String,
+    val username: String,
 
-    @Column( name = "password")
-    val passWord: String,
+    val password: String,
 
     @Column( name = "create_at")
     val createDate: LocalDateTime,
@@ -31,5 +29,5 @@ data class Login(
     val updateAt: LocalDateTime,
 
     @Column( name = "update_by")
-    val updateBy: String,
+    val updateBy: String
 )

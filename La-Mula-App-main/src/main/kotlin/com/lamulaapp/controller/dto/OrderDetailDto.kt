@@ -1,5 +1,6 @@
 package com.lamulaapp.controller.dto
 
+import java.math.BigDecimal
 import java.util.UUID
 
 data class OrderDetailDto(
@@ -7,5 +8,5 @@ data class OrderDetailDto(
     val idOrder: UUID,
     val idProduct: UUID,
     val quantity: Int,
-    val unitCost: Double
+    val unitCost: BigDecimal
 )

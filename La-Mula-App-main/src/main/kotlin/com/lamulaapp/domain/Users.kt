@@ -6,7 +6,7 @@ import java.util.*
 
 @Entity
 @Table(name = "users")
-data class Users(
+data class User(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     val id: UUID? = null,
@@ -37,6 +37,5 @@ data class Users(
     val updateAt: LocalDateTime,
 
     @Column( name = "update_by")
-    val updateBy: String,
-
-    )
+    val updateBy: String
+)
