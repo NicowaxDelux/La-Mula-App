@@ -8,7 +8,7 @@ import java.util.*
 data class OrderDetail(
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_order_detail", nullable = false)
     val idOrderDetail: UUID? = null,
 
@@ -20,9 +20,20 @@ data class OrderDetail(
     @JoinColumn(name = "id_product", nullable = false)
     val product: Product,
 
-    @Column(name = "quantity", nullable = false)
     val quantity: Int,
 
     @Column(name = "unit_cost", nullable = false)
-    val unitCost: Double
+    val unitCost: Double,
+
+    @Column( name = "create_at")
+    val createDate: LocalDateTime,
+
+    @Column( name = "create_by")
+    val createBy: String,
+
+    @Column( name = "update_at")
+    val updateAt: LocalDateTime,
+
+    @Column( name = "update_by")
+    val updateBy: String
 )

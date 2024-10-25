@@ -8,11 +8,10 @@ import java.util.*
 data class ProductDetail(
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_product_detail", nullable = false)
     val idProductDetail: UUID? = null,
 
-    @Column(name = "name", nullable = false)
     val name: String,
 
     @Column(name = "package_size", nullable = false)
@@ -20,5 +19,17 @@ data class ProductDetail(
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "id_attachment", nullable = false)
-    val attachment: Attachment
+    val attachment: Attachment,
+
+    @Column( name = "create_at")
+    val createDate: LocalDateTime,
+
+    @Column( name = "create_by")
+    val createBy: String,
+
+    @Column( name = "update_at")
+    val updateAt: LocalDateTime,
+
+    @Column( name = "update_by")
+    val updateBy: String
 )

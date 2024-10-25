@@ -8,17 +8,27 @@ import java.util.*
 data class Attachment(
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_attachment", nullable = false)
     val idAttachment: UUID? = null,
 
-    @Column(name = "name", nullable = false)
     val name: String,
 
     @Lob
-    @Column(name = "content", nullable = false)
     val content: ByteArray,
 
     @Column(name = "content_type", nullable = false)
-    val contentType: String
+    val contentType: String,
+
+    @Column( name = "create_at")
+    val createDate: LocalDateTime,
+
+    @Column( name = "create_by")
+    val createBy: String,
+
+    @Column( name = "update_at")
+    val updateAt: LocalDateTime,
+
+    @Column( name = "update_by")
+    val updateBy: String
 )
