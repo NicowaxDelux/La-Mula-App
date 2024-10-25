@@ -27,15 +27,15 @@ data class OrderDetail(
     @Column(name = "unit_cost", nullable = false)
     val unitCost: BigDecimal,
 
-    @Column( name = "created_at")
+    @Column(name = "created_at")
     val createdAt: LocalDateTime,
 
-    @Column( name = "created_by")
+    @Column(name = "created_by")
     val createdBy: String,
 
-    @Column( name = "updated_at")
+    @Column(name = "updated_at")
     val updatedAt: LocalDateTime,
 
-    @Column( name = "updated_by")
+    @Column(name = "updated_by")
     val updatedBy: String
 )

@@ -17,15 +17,15 @@ data class CoffeeType(
 
     val description: String,
 
-    @Column( name = "create_at")
+    @Column( name = "created_at")
     val createdAt: LocalDateTime,
 
-    @Column( name = "create_by")
+    @Column( name = "created_by")
     val createdBy: String,
 
-    @Column( name = "update_at")
+    @Column( name = "updated_at")
     val updatedAt: LocalDateTime,
 
-    @Column( name = "update_by")
+    @Column( name = "updated_by")
     val updatedBy: String
 )
