@@ -23,15 +23,15 @@ data class Attachment(
     @Column(name = "content_type", nullable = false)
     val contentType: String,
 
-    @Column( name = "created_at")
+    @Column(name = "created_at")
     val createdAt: LocalDateTime,
 
-    @Column( name = "created_by")
+    @Column(name = "created_by")
     val createdBy: String,
 
-    @Column( name = "updated_at")
-    val updatedAt: LocalDateTime,
+    @Column(name = "updated_at")
+    val updatedAt: LocalDateTime? = null,
 
-    @Column( name = "updated_by")
-    val updatedBy: String
+    @Column(name = "updated_by")
+    val updatedBy: String? = null
 )

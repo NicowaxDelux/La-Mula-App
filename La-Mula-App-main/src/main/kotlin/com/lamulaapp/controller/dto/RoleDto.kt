@@ -9,6 +9,6 @@ data class RoleDto(
     val description: String,
     val createdAt: LocalDateTime,
     val createdBy: String,
-    val updatedAt: LocalDateTime,
-    val updatedBy: String
+    val updatedAt: LocalDateTime? = null,
+    val updatedBy: String? = null
 )

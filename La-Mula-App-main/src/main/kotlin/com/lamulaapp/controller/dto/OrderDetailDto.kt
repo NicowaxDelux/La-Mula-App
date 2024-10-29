@@ -12,6 +12,6 @@ data class OrderDetailDto(
     val unitCost: BigDecimal,
     val createdAt: LocalDateTime,
     val createdBy: String,
-    val updatedAt: LocalDateTime,
-    val updatedBy: String
+    val updatedAt: LocalDateTime? = null,
+    val updatedBy: String? = null
 )

@@ -34,8 +34,8 @@ data class OrderDetail(
     val createdBy: String,
 
     @Column(name = "updated_at")
-    val updatedAt: LocalDateTime,
+    val updatedAt: LocalDateTime? = null,
 
     @Column(name = "updated_by")
-    val updatedBy: String
+    val updatedBy: String? = null
 )
