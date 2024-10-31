@@ -14,18 +14,14 @@ data class User(
 
     @OneToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "id_role", nullable = false)
-    val role: Role? = null,
+    val role: Role,
 
-    @Column(name = "name")
     val name: String,
 
-    @Column(name = "email")
     val email: String,
 
-    @Column(name = "address")
     val address: String,
 
-    @Column(name = "phone")
     val phone: String,
 
     @Column( name = "created_at")
@@ -35,8 +31,8 @@ data class User(
     val createdBy: String,
 
     @Column( name = "updated_at")
-    val updatedAt: LocalDateTime,
+    val updatedAt: LocalDateTime? = null,
 
     @Column( name = "updated_by")
-    val updatedBy: String
+    val updatedBy: String? = null
 )
