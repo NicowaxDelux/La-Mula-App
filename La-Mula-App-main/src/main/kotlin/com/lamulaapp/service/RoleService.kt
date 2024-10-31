@@ -57,7 +57,7 @@ class RoleService(
         }
 
         if (roleDto.updatedBy == null){
-            throw IllegalArgumentException("The field 'updateBy' is mandatory!.")
+            throw IllegalArgumentException("The field 'updatedBy' is mandatory!.")
         }
 
         val update = roleDto
