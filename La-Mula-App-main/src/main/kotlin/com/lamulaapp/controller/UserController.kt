@@ -23,24 +23,12 @@ class UserController(
 
     @GetMapping("/User/{id}")
     fun getUserById(@PathVariable("id") id: UUID): ResponseEntity<UserDto> {
-        val user = userService.getUserById(id)
-
-         return if (user != null) {
-            ResponseEntity(user, HttpStatus.OK)
-        }else {
-            ResponseEntity(HttpStatus.NOT_FOUND)
-        }
+        return ResponseEntity(userService.getUserById(id), HttpStatus.OK)
     }
 
     @PutMapping("/User/{id}")
     fun  updateUser(@PathVariable("id") id: UUID, @RequestBody userDto: UserDto): ResponseEntity<UserDto> {
-        val user = userService.updateUser(id, userDto)
-
-        return if (user != null) {
-            ResponseEntity(user, HttpStatus.OK)
-        }else {
-            ResponseEntity(HttpStatus.NOT_FOUND)
-        }
+        return ResponseEntity(userService.updateUser(id, userDto), HttpStatus.OK)
     }
 
     @DeleteMapping("/User/{id}")
