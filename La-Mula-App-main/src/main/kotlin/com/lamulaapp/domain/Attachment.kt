@@ -15,8 +15,6 @@ data class Attachment(
 
     val name: String,
 
-    @Lob
-    @Basic(fetch = FetchType.LAZY)
     @Column(columnDefinition = "bytea", nullable = false)
     val content: ByteArray,
 

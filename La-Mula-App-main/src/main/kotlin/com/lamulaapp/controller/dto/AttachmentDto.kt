@@ -5,11 +5,11 @@ import java.util.*
 
 data class AttachmentDto(
     val idAttachment: UUID? = null,
-    val name: String,
-    val content: ByteArray,
-    val contentType: String,
-    val createdAt: LocalDateTime,
-    val createdBy: String,
+    val name: String? = null,
+    val content: String? = null,
+    val contentType: String? = null,
+    val createdAt: LocalDateTime? = null,
+    val createdBy: String? = null,
     val updatedAt: LocalDateTime? = null,
     val updatedBy: String? = null
 )
