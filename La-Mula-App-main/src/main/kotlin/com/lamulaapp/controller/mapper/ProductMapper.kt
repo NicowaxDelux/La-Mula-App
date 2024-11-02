@@ -21,6 +21,7 @@ fun Product.toDto(): ProductDto = ProductDto(
 fun ProductDto.toEntity() = Product(
     idProduct = this.idProduct,
     name = this.name,
+    description = this.description,
     coffeeType = this.coffeeTypeDto?.toEntity(),
     attachment = this.attachmentDto.toEntity(),
     unitCost = this.unitCost,

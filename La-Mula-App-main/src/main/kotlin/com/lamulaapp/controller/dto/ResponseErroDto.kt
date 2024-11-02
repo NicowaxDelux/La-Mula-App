@@ -1,6 +1,5 @@
 package com.lamulaapp.controller.dto
 
-import io.konform.validation.ValidationError
 import java.time.LocalDateTime
 
 class ResponseErrorDto(
