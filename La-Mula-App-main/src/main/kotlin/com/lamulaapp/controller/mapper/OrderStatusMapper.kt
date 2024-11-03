@@ -5,7 +5,7 @@ import com.lamulaapp.domain.OrderStatus
 
 fun OrderStatus.toDto() = OrderStatusDto(
     idOrderStatus = this.idOrderStatus,
-    name = this.name,
+    typeStatus = this.typeStatus,
     description = this.description,
     createdAt = this.createdAt,
     createdBy = this.createdBy,
@@ -15,7 +15,7 @@ fun OrderStatus.toDto() = OrderStatusDto(
 
 fun OrderStatusDto.toEntity() = OrderStatus(
     idOrderStatus = this.idOrderStatus,
-    name = this.name,
+    typeStatus = this.typeStatus,
     description = this.description,
     createdAt = this.createdAt,
     createdBy = this.createdBy,
