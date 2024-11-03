@@ -13,8 +13,8 @@ data class ProductDto(
     val unitCost: BigDecimal,
     val quantity: Int,
     val packageSize: String,
-    val createdAt: LocalDateTime,
+    val createdAt: LocalDateTime = LocalDateTime.now(),
     val createdBy: String,
-    val updatedAt: LocalDateTime,
-    val updatedBy: String
+    val updatedAt: LocalDateTime? = null,
+    val updatedBy: String? = null
 )

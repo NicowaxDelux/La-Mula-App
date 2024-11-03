@@ -3,8 +3,12 @@ package com.lamulaapp.service
 import com.lamulaapp.controller.dto.AttachmentDto
 import com.lamulaapp.controller.mapper.toDto
 import com.lamulaapp.controller.mapper.toEntity
+import com.lamulaapp.exception.DuplicateKeyException
+import com.lamulaapp.exception.KeysAreDifferentException
 import com.lamulaapp.repository.AttachmentRepository
+import jakarta.persistence.EntityNotFoundException
 import org.springframework.stereotype.Service
+import java.time.LocalDateTime
 import java.util.*
 
 @Service
@@ -13,6 +17,12 @@ class AttachmentService(
 ) {
 
     fun createAttachment(attachmentDto: AttachmentDto): AttachmentDto {
+        val responsePKFound = attachmentDto.idAttachment?.let { attachmentRepository.findById(it) }
+
+        if (responsePKFound != null && responsePKFound.isPresent) {
+            throw DuplicateKeyException("This ID already exists for the attachment to be created!")
+        }
+
         val response = attachmentRepository.save(attachmentDto.toEntity())
         return response.toDto()
     }
@@ -26,7 +36,7 @@ class AttachmentService(
         return if (response.isPresent) {
             response.get().toDto()
         } else {
-            null
+            throw EntityNotFoundException("There is no attachment with the given ID!")
         }
     }
 
@@ -34,17 +44,27 @@ class AttachmentService(
         val response = attachmentRepository.findById(id)
 
         if (!response.isPresent) {
-            return null
+            throw EntityNotFoundException("There is no attachment with the given ID!")
         }
 
         if (id != attachmentDto.idAttachment) {
-            return null
+            throw KeysAreDifferentException("The keys should be the same as the attachment with the given ID!")
         }
 
-        return attachmentRepository.save(attachmentDto.toEntity()).toDto()
+        val entity = attachmentDto
+            .toEntity()
+            .copy(updatedAt = LocalDateTime.now(), updatedBy = attachmentDto.updatedBy)
+
+        return attachmentRepository.save(entity).toDto()
     }
 
     fun deleteAttachment(id: UUID) {
+        val response = attachmentRepository.findById(id)
+
+        if (!response.isPresent) {
+            throw EntityNotFoundException("There is no attachment with the given ID!")
+        }
+
         attachmentRepository.deleteById(id)
     }
 }

@@ -26,5 +26,5 @@ data class Role (
     val updatedAt: LocalDateTime? = null,
 
     @Column(name = "updated_by")
-    val updatedBy: String? = null,
+    val updatedBy: String? = null
     )
