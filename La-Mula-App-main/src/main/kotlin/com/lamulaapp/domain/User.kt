@@ -12,20 +12,16 @@ data class User(
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     val idUser: UUID? = null,
 
-    @OneToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "id_role", nullable = false)
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "id_role")
     val role: Role? = null,
 
-    @Column(name = "name")
     val name: String,
 
-    @Column(name = "email")
     val email: String,
 
-    @Column(name = "address")
     val address: String,
 
-    @Column(name = "phone")
     val phone: String,
 
     @Column(name = "created_at")

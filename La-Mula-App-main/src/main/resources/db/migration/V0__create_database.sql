@@ -10,9 +10,20 @@ CREATE TABLE roles (
     updated_by CHARACTER VARYING
 );
 
+CREATE TABLE logins (
+    id_login UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+    id_role UUID NOT NULL REFERENCES roles(id_role),
+    username CHARACTER VARYING NOT NULL,
+    password CHARACTER VARYING NOT NULL,
+    created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    created_by CHARACTER VARYING NOT NULL DEFAULT 'SYSTEM',
+    updated_at TIMESTAMP,
+    updated_by CHARACTER VARYING
+);
+
 CREATE TABLE users (
     id_user UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
-    id_role UUID NOT NULL REFERENCES roles(id_role),
+    id_login UUID NOT NULL REFERENCES logins(id_login),
     name CHARACTER VARYING NOT NULL,
     email CHARACTER VARYING NOT NULL,
     address CHARACTER VARYING NOT NULL,
@@ -23,15 +34,17 @@ CREATE TABLE users (
     updated_by CHARACTER VARYING
 );
 
-CREATE TABLE logins (
-    id_login UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
-    id_user UUID NOT NULL REFERENCES users(id_user),
-    username CHARACTER VARYING NOT NULL,
-    password CHARACTER VARYING NOT NULL,
-    created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    created_by CHARACTER VARYING NOT NULL DEFAULT 'SYSTEM',
-    updated_at TIMESTAMP,
-    updated_by CHARACTER VARYING
+CREATE TABLE companies (
+   id_company UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+   id_login UUID NOT NULL REFERENCES logins(id_login),
+   name CHARACTER VARYING NOT NULL,
+   email CHARACTER VARYING NOT NULL,
+   address CHARACTER VARYING NOT NULL,
+   phone CHARACTER VARYING NOT NULL,
+   created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+   created_by CHARACTER VARYING NOT NULL DEFAULT 'SYSTEM',
+   updated_at TIMESTAMP,
+   updated_by CHARACTER VARYING
 );
 
 CREATE TABLE order_statuses (
@@ -81,6 +94,7 @@ CREATE TABLE products (
     id_product UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
     id_coffee_type UUID REFERENCES coffee_types(id_coffee_type),
     id_attachment UUID NOT NULL REFERENCES attachments(id_attachment),
+    id_company UUID NOT NULL REFERENCES companies(id_company),
     name CHARACTER VARYING NOT NULL,
     description CHARACTER VARYING NOT NULL,
     unit_cost NUMERIC(8, 4) NOT NULL,
