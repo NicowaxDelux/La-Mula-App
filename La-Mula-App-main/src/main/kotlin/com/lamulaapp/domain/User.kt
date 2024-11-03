@@ -1,5 +1,6 @@
 package com.lamulaapp.domain
 
+import com.lamulaapp.controller.dto.RoleDto
 import jakarta.persistence.*
 import java.time.LocalDateTime
 import java.util.*
@@ -12,9 +13,9 @@ data class User(
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     val idUser: UUID? = null,
 
-    @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "id_role")
-    val role: Role? = null,
+    @OneToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "id_role", nullable = false)
+    val role: RoleDto,
 
     val name: String,
 

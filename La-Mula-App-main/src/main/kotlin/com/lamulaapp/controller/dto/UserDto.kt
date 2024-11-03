@@ -10,7 +10,7 @@ data class UserDto(
     val email: String,
     val address: String,
     val phone: String,
-    val createdAt: LocalDateTime,
+    val createdAt: LocalDateTime = LocalDateTime.now(),
     val createdBy: String,
     val updatedAt: LocalDateTime? = null,
     val updatedBy: String? = null

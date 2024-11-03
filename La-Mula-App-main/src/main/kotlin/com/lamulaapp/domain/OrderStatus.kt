@@ -12,8 +12,8 @@ data class OrderStatus(
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     val idOrderStatus: UUID? = null,
 
-    @Column(name = "name")
-    val name: String,
+    @Column(name = "type_status")
+    val typeStatus: String,
 
     @Column(name = "description")
     val description: String,

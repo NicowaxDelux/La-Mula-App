@@ -8,13 +8,12 @@ import java.util.*
 @Table(name = "roles")
 data class Role (
     @Id
+    @Column(name = "id_role")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     val idRole: UUID? = null,
 
-    @Column(name = "name")
     val name: String,
 
-    @Column(name = "description")
     val description: String,
 
     @Column(name = "created_at")
