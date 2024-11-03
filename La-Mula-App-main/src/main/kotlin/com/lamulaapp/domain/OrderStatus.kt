@@ -12,8 +12,8 @@ data class OrderStatus(
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     val idOrderStatus: UUID? = null,
 
-    @Column(name = "name")
-    val name: String,
+    @Column(name = "type_status")
+    val typeStatus: String,
 
     @Column(name = "description")
     val description: String,
@@ -25,8 +25,8 @@ data class OrderStatus(
     val createdBy: String,
 
     @Column( name = "updated_at")
-    val updatedAt: LocalDateTime,
+    val updatedAt: LocalDateTime? = null,
 
     @Column( name = "updated_by")
-    val updatedBy: String,
+    val updatedBy: String? = null,
     )
