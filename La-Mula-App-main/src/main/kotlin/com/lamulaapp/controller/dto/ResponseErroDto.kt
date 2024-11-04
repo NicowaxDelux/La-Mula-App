@@ -7,3 +7,4 @@ class ResponseErrorDto(
     val statusCode: Int,
     val timestamp: LocalDateTime = LocalDateTime.now(),
     val errors: Map<String, String> = emptyMap()
+)
