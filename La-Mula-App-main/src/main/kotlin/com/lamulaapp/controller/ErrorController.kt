@@ -3,6 +3,7 @@ package com.lamulaapp.controller
 import com.lamulaapp.controller.dto.ResponseErrorDto
 import com.lamulaapp.exception.DuplicateKeyException
 import com.lamulaapp.exception.KeysAreDifferentException
+import com.lamulaapp.exception.LoginNotFoundException
 import com.lamulaapp.exception.ValidationErrorsException
 import jakarta.persistence.EntityNotFoundException
 import org.springframework.http.HttpStatus
@@ -18,7 +19,8 @@ class ErrorController {
         DuplicateKeyException::class,
         EntityNotFoundException::class,
         KeysAreDifferentException::class,
-        IllegalArgumentException::class
+        IllegalArgumentException::class,
+        LoginNotFoundException::class
     )
     fun handleException(e: Exception): ResponseEntity<ResponseErrorDto> {
         val response = ResponseErrorDto(

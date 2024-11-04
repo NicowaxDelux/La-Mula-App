@@ -12,17 +12,17 @@ data class User(
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     val idUser: UUID? = null,
 
-    @OneToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "id_role", nullable = false)
-    val role: Role,
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "id_login", nullable = false)
+    val login: Login,
 
     val name: String,
 
     val email: String,
 
-    val address: String,
+    val address: String? = null,
 
-    val phone: String,
+    val phone: String? = null,
 
     @Column(name = "created_at")
     val createdAt: LocalDateTime,

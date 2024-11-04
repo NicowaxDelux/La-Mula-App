@@ -1,9 +1,11 @@
 package com.lamulaapp.service
 
 import com.lamulaapp.controller.dto.LoginDto
+import com.lamulaapp.controller.dto.LoginResponseDto
 import com.lamulaapp.controller.mapper.toDto
 import com.lamulaapp.controller.mapper.toEntity
 import com.lamulaapp.exception.DuplicateKeyException
+import com.lamulaapp.exception.LoginNotFoundException
 import com.lamulaapp.repository.LoginRepository
 import jakarta.persistence.EntityNotFoundException
 import org.springframework.stereotype.Service
@@ -13,6 +15,19 @@ import java.util.*
 class LoginService(
     private val loginRepository: LoginRepository,
 ) {
+
+    fun login(loginDto: LoginDto): LoginResponseDto {
+        val response = loginRepository.findLoginResponseByUsernameAndPassword(
+            loginDto.username!!,
+            loginDto.password!!
+        )
+
+        if (!response.isPresent) {
+            throw LoginNotFoundException("Wrong username or password")
+        }
+
+        return response.get()
+    }
 
     fun createLogin(loginDto: LoginDto): LoginDto {
         val responsePKFound = loginDto.idLogin?.let { loginRepository.findById(it) }

@@ -15,7 +15,7 @@ import java.util.*
 class RoleService(
     private val roleRepository: RoleRepository
 ) {
-    fun createRole(roleDto: RoleDto): RoleDto{
+    fun createRole(roleDto: RoleDto): RoleDto {
         val foundById = roleDto.idRole?.let { roleRepository.findById(it) }
 
         if (foundById != null && foundById.isPresent){

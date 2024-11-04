@@ -11,27 +11,27 @@ import java.util.*
 class RoleController(
     private val roleService: RoleService
 ) {
-    @PostMapping("/Roles")
+    @PostMapping("/roles")
     fun createRole(@RequestBody roleDto: RoleDto): ResponseEntity<RoleDto> {
         return ResponseEntity(roleService.createRole(roleDto), HttpStatus.CREATED)
     }
 
-    @GetMapping("/Roles")
+    @GetMapping("/roles")
     fun getRoles():ResponseEntity<List<RoleDto>> {
         return ResponseEntity(roleService.getRoles(), HttpStatus.OK)
     }
 
-    @GetMapping("/Roles/{id}")
+    @GetMapping("/roles/{id}")
     fun getRoleById(@PathVariable("id") id: UUID): ResponseEntity<RoleDto> {
         return ResponseEntity(roleService.getRoleById(id), HttpStatus.OK)
     }
 
-    @PutMapping("/Roles/{id}")
+    @PutMapping("/roles/{id}")
     fun updateRole(@PathVariable("id") id: UUID,@RequestBody roleDto: RoleDto): ResponseEntity<RoleDto> {
         return ResponseEntity(roleService.updateRole(id, roleDto), HttpStatus.OK)
     }
 
-    @DeleteMapping("/Roles/{id}")
+    @DeleteMapping("/roles/{id}")
     fun deleteRole(@PathVariable("id") id: UUID): ResponseEntity<Unit> {
         return ResponseEntity(roleService.deleteRole(id), HttpStatus.NO_CONTENT)
     }

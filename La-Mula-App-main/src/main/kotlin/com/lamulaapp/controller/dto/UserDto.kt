@@ -5,13 +5,13 @@ import java.util.UUID
 
 data class UserDto(
     val idUser: UUID? = null,
-    val roleDto: RoleDto,
-    val name: String,
-    val email: String,
-    val address: String,
-    val phone: String,
-    val createdAt: LocalDateTime = LocalDateTime.now(),
-    val createdBy: String,
+    val loginDto: LoginDto? = null,
+    val name: String? = null,
+    val email: String? = null,
+    val address: String? = null,
+    val phone: String? = null,
+    val createdAt: LocalDateTime? = null,
+    val createdBy: String? = null,
     val updatedAt: LocalDateTime? = null,
     val updatedBy: String? = null
 )

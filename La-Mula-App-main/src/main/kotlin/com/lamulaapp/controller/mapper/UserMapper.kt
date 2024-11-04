@@ -5,7 +5,7 @@ import com.lamulaapp.domain.User
 
 fun User.toDto() = UserDto(
     idUser = this.idUser,
-    roleDto = this.role.toDto(),
+    loginDto = this.login.toDto(),
     name = this.name,
     email = this.email,
     address = this.address,
@@ -18,13 +18,13 @@ fun User.toDto() = UserDto(
 
 fun UserDto.toEntity() = User(
     idUser = idUser,
-    role = this.roleDto.toEntity(),
-    name = this.name,
-    email = this.email,
+    login = this.loginDto?.toEntity()!!,
+    name = this.name!!,
+    email = this.email!!,
     address = this.address,
     phone = this.phone,
-    createdAt = this.createdAt,
-    createdBy = this.createdBy,
+    createdAt = this.createdAt!!,
+    createdBy = this.createdBy!!,
     updatedAt = this.updatedAt,
     updatedBy = this.updatedBy
 )

@@ -34,3 +34,16 @@ fun validateUpdatePassword(loginDto: LoginDto): ValidationResult<LoginDto> {
 
     return validateLogin(loginDto)
 }
+
+fun validateLogin(loginDto: LoginDto): ValidationResult<LoginDto> {
+    val validateLogin = Validation {
+        LoginDto::username required {
+            minLength(3)
+        }
+        LoginDto::password required {
+            minLength(6)
+            maxLength(20)
+        }
+    }
+    return validateLogin(loginDto)
+}

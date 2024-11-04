@@ -1,7 +1,9 @@
 package com.lamulaapp.controller
 
 import com.lamulaapp.controller.dto.LoginDto
+import com.lamulaapp.controller.dto.LoginResponseDto
 import com.lamulaapp.controller.utils.validateCreateLogin
+import com.lamulaapp.controller.utils.validateLogin
 import com.lamulaapp.controller.utils.validateUpdatePassword
 import com.lamulaapp.exception.ValidationErrorsException
 import com.lamulaapp.service.LoginService
@@ -16,6 +18,17 @@ class LoginController(
 ) {
 
     @PostMapping("/login")
+    fun login(@RequestBody loginDto: LoginDto): ResponseEntity<LoginResponseDto> {
+        val validateLogin = validateLogin(loginDto)
+
+        if (!validateLogin.isValid) {
+            throw ValidationErrorsException(validateLogin.errors)
+        }
+
+        return ResponseEntity(loginService.login(loginDto), HttpStatus.OK)
+    }
+
+    @PostMapping("/logins")
     fun createLogin(@RequestBody loginDto: LoginDto): ResponseEntity<LoginDto> {
         val validation = validateCreateLogin(loginDto)
 
@@ -26,17 +39,17 @@ class LoginController(
         return ResponseEntity(loginService.createLogin(loginDto), HttpStatus.CREATED)
     }
 
-    @GetMapping("/login")
+    @GetMapping("/logins")
     fun getLogins(): ResponseEntity<List<LoginDto>> {
         return ResponseEntity(loginService.getLogins(),HttpStatus.OK)
     }
 
-    @GetMapping("/login/{id}")
+    @GetMapping("/logins/{id}")
     fun getLoginById(@PathVariable("id") id: UUID): ResponseEntity<LoginDto> {
         return ResponseEntity(loginService.getLoginById(id),HttpStatus.OK)
     }
 
-    @PutMapping("/login/{id}")
+    @PutMapping("/logins/{id}")
     fun updatePassword(@PathVariable("id") id: UUID, @RequestBody loginDto: LoginDto): ResponseEntity<LoginDto> {
         val validation = validateUpdatePassword(loginDto)
 
@@ -47,7 +60,7 @@ class LoginController(
         return ResponseEntity(loginService.updatePassword(id, loginDto), HttpStatus.OK)
     }
 
-    @DeleteMapping("/login/{id}")
+    @DeleteMapping("/logins/{id}")
     fun deleteLogin(@PathVariable("id") id: UUID): ResponseEntity<Unit> {
         return ResponseEntity(loginService.deleteLogin(id), HttpStatus.NO_CONTENT)
     }
