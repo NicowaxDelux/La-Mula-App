@@ -12,9 +12,9 @@ data class Login(
     @GeneratedValue (strategy = GenerationType.IDENTITY)
     val idLogin: UUID? = null,
 
-    @OneToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "id_user", nullable = false)
-    val user: User,
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "id_role", nullable = false)
+    val role: Role,
 
     val username: String,
 

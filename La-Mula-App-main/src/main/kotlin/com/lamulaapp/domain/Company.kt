@@ -20,9 +20,9 @@ data class Company (
 
     val email: String,
 
-    val address: String,
+    val address: String? = null,
 
-    val phone: String,
+    val phone: String? = null,
 
     @Column(name = "created_at")
     val createdAt: LocalDateTime,

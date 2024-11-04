@@ -8,5 +8,5 @@ import java.util.*
 @Repository
 interface OrderStatusRepository: JpaRepository<OrderStatus, UUID> {
 
-    fun findByName(name: String): Optional<OrderStatus>
+    fun findByTypeStatus(typeStatus: String): Optional<OrderStatus>
 }

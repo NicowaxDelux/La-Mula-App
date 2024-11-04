@@ -29,4 +29,4 @@ data class OrderStatus(
 
     @Column(name = "updated_by")
     val updatedBy: String? = null
-    )
+)

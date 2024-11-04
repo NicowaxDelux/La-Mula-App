@@ -27,4 +27,4 @@ data class Role (
 
     @Column(name = "updated_by")
     val updatedBy: String? = null
-    )
+)

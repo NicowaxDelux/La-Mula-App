@@ -31,7 +31,7 @@ class AttachmentService(
         return attachmentRepository.findAll().map { it.toDto() }
     }
 
-    fun getAttachmentById(id: UUID): AttachmentDto? {
+    fun getAttachmentById(id: UUID): AttachmentDto {
         val response = attachmentRepository.findById(id)
         return if (response.isPresent) {
             response.get().toDto()
@@ -40,7 +40,7 @@ class AttachmentService(
         }
     }
 
-    fun updateAttachment(id: UUID, attachmentDto: AttachmentDto): AttachmentDto? {
+    fun updateAttachment(id: UUID, attachmentDto: AttachmentDto): AttachmentDto {
         val response = attachmentRepository.findById(id)
 
         if (!response.isPresent) {

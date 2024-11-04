@@ -4,12 +4,12 @@ import java.util.UUID
 import java.time.LocalDateTime
 
 data class LoginDto(
-    val id: UUID? = null,
-    val userDto: UserDto? = null,
-    val username: String,
-    val password: String,
-    val createdAt: LocalDateTime,
-    val createdBy: String,
+    val idLogin: UUID? = null,
+    val roleDto: RoleDto? = null,
+    val username: String? = null,
+    val password: String? = null,
+    val createdAt: LocalDateTime? = null,
+    val createdBy: String? = null,
     val updatedAt: LocalDateTime? = null,
     val updatedBy: String? = null
 )
