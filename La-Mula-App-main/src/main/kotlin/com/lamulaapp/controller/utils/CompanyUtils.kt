@@ -6,6 +6,7 @@ import io.konform.validation.ValidationResult
 
 fun validateCreateCompany(companyDto: CompanyDto): ValidationResult<CompanyDto> {
     val validateCompany = Validation {
+        CompanyDto::loginDto required {}
         CompanyDto::name required {}
         CompanyDto::email required {}
         CompanyDto::createdAt required {}
