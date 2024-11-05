@@ -16,6 +16,7 @@ data class Login(
     @JoinColumn(name = "id_role", nullable = false)
     val role: Role,
 
+    @Column(unique = true)
     val username: String,
 
     val password: String,

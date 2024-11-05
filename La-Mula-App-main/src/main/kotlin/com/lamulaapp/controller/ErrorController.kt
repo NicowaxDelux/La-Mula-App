@@ -16,7 +16,6 @@ class ErrorController {
 
     @ExceptionHandler(
         DuplicateKeyException::class,
-        DuplicateKeyException::class,
         EntityNotFoundException::class,
         KeysAreDifferentException::class,
         IllegalArgumentException::class,

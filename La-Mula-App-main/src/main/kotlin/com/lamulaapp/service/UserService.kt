@@ -22,7 +22,7 @@ class UserService(
             throw DuplicateKeyException("This ID already exists in database!.")
         }
 
-        val response = userRepository.save(userDto.toEntity())
+        val response = userRepository.saveAndFlush(userDto.toEntity())
         return response.toDto()
     }
 

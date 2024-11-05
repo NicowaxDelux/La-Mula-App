@@ -74,7 +74,7 @@ class LoginServiceTest {
     fun `should create a new login`() {
         // Given
         every { loginRepositoryMock.findById(idLogin) } returns Optional.empty()
-        every { loginRepositoryMock.save(any()) } returns loginDto.toEntity()
+        every { loginRepositoryMock.saveAndFlush(any()) } returns loginDto.toEntity()
 
         // When
         val result = loginService.createLogin(loginDto)
@@ -82,7 +82,7 @@ class LoginServiceTest {
         // Then
         assertEquals(loginDto, result)
         verify(exactly = 1) { loginRepositoryMock.findById(idLogin) }
-        verify(exactly = 1) { loginRepositoryMock.save(any()) }
+        verify(exactly = 1) { loginRepositoryMock.saveAndFlush(any()) }
     }
 
     @Test

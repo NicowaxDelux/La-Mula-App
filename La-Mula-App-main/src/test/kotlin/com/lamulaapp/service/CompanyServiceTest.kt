@@ -47,7 +47,7 @@ class CompanyServiceTest {
     fun `should create a new company`() {
         // Given
         every { companyRepositoryMock.findById(idCompany) } returns Optional.empty()
-        every { companyRepositoryMock.save(any()) } returns companyDto.toEntity()
+        every { companyRepositoryMock.saveAndFlush(any()) } returns companyDto.toEntity()
 
         // When
         val result = companyService.createCompany(companyDto)
@@ -55,7 +55,7 @@ class CompanyServiceTest {
         // Then
         assertEquals(companyDto, result)
         verify(exactly = 1) { companyRepositoryMock.findById(idCompany) }
-        verify(exactly = 1) { companyRepositoryMock.save(companyDto.toEntity()) }
+        verify(exactly = 1) { companyRepositoryMock.saveAndFlush(companyDto.toEntity()) }
     }
 
     @Test

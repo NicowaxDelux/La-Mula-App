@@ -18,6 +18,7 @@ data class User(
 
     val name: String,
 
+    @Column(unique = true)
     val email: String,
 
     val address: String? = null,
