@@ -14,3 +14,17 @@ fun validateCreateUser(userDto: UserDto): ValidationResult<UserDto> {
     }
     return validateUser(userDto)
 }
+
+fun validateUpdateUser(userDto: UserDto): ValidationResult<UserDto> {
+    val validationUser = Validation {
+        UserDto::idUser required {}
+        UserDto::name required {}
+        UserDto::email required {}
+        UserDto::address required {}
+        UserDto::phone required {}
+        UserDto::createdAt required {}
+        UserDto::createdBy required {}
+        UserDto::updatedBy required {}
+    }
+    return validationUser(userDto)
+}

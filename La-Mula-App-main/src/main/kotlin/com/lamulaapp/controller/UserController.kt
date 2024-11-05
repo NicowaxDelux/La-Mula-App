@@ -2,6 +2,7 @@ package com.lamulaapp.controller
 
 import com.lamulaapp.controller.dto.UserDto
 import com.lamulaapp.controller.utils.validateCreateUser
+import com.lamulaapp.controller.utils.validateUpdateUser
 import com.lamulaapp.exception.ValidationErrorsException
 import com.lamulaapp.service.UserService
 import org.springframework.http.HttpStatus
@@ -36,6 +37,12 @@ class UserController(
 
     @PutMapping("/users/{id}")
     fun  updateUser(@PathVariable("id") id: UUID, @RequestBody userDto: UserDto): ResponseEntity<UserDto> {
+        val validation = validateUpdateUser(userDto)
+
+        if (!validation.isValid) {
+            throw ValidationErrorsException(validation.errors)
+        }
+
         return ResponseEntity(userService.updateUser(id, userDto), HttpStatus.OK)
     }
 
