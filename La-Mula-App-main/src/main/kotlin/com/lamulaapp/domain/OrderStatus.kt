@@ -15,7 +15,6 @@ data class OrderStatus(
     @Column(name = "type_status")
     val typeStatus: String,
 
-    @Column(name = "description")
     val description: String,
 
     @Column(name = "created_at")

@@ -1,11 +1,12 @@
 package com.lamulaapp.controller.mapper
 
+import com.lamulaapp.controller.dto.LoginDto
 import com.lamulaapp.controller.dto.UserDto
 import com.lamulaapp.domain.User
 
 fun User.toDto() = UserDto(
     idUser = this.idUser,
-    roleDto = this.role,
+    loginDto = this.login.toDto(),
     name = this.name,
     email = this.email,
     address = this.address,
@@ -18,7 +19,7 @@ fun User.toDto() = UserDto(
 
 fun UserDto.toEntity() = User(
     idUser = idUser,
-    role = this.roleDto,
+    login = this.loginDto.toEntity(),
     name = this.name,
     email = this.email,
     address = this.address,
