@@ -2,7 +2,6 @@ package com.lamulaapp.controller
 
 import com.lamulaapp.controller.dto.UserDto
 import com.lamulaapp.controller.utils.validateCreateUser
-import com.lamulaapp.controller.utils.validateUpdateRole
 import com.lamulaapp.controller.utils.validateUpdateUser
 import com.lamulaapp.exception.ValidationErrorsException
 import com.lamulaapp.service.UserService
@@ -15,28 +14,28 @@ import java.util.*
 class UserController(
     private val userService: UserService
 ) {
-    @PostMapping("/Users")
+    @PostMapping("/users")
     fun createUser(@RequestBody userDto: UserDto): ResponseEntity<UserDto> {
-        val validation = validateCreateUser(userDto)
+        val validateUser = validateCreateUser(userDto)
 
-        if (!validation.isValid) {
-            throw ValidationErrorsException(validation.errors)
+        if (!validateUser.isValid) {
+            throw ValidationErrorsException(validateUser.errors)
         }
 
         return ResponseEntity(userService.createUser(userDto), HttpStatus.CREATED)
     }
 
-    @GetMapping("/Users")
+    @GetMapping("/users")
     fun getUsers(): ResponseEntity<List<UserDto>> {
         return ResponseEntity(userService.getUsers(), HttpStatus.OK)
     }
 
-    @GetMapping("/Users/{id}")
+    @GetMapping("/users/{id}")
     fun getUserById(@PathVariable("id") id: UUID): ResponseEntity<UserDto> {
         return ResponseEntity(userService.getUserById(id), HttpStatus.OK)
     }
 
-    @PutMapping("/Users/{id}")
+    @PutMapping("/users/{id}")
     fun  updateUser(@PathVariable("id") id: UUID, @RequestBody userDto: UserDto): ResponseEntity<UserDto> {
         val validation = validateUpdateUser(userDto)
 
@@ -47,7 +46,7 @@ class UserController(
         return ResponseEntity(userService.updateUser(id, userDto), HttpStatus.OK)
     }
 
-    @DeleteMapping("/Users/{id}")
+    @DeleteMapping("/users/{id}")
     fun deleteUser(@PathVariable("id") id: UUID): ResponseEntity<Unit> {
         return ResponseEntity(userService.deleteUser(id), HttpStatus.NO_CONTENT)
     }

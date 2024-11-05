@@ -1,10 +1,10 @@
 package com.lamulaapp.controller.mapper
 
-import com.lamulaapp.controller.dto.UserDto
-import com.lamulaapp.domain.User
+import com.lamulaapp.controller.dto.CompanyDto
+import com.lamulaapp.domain.Company
 
-fun User.toDto() = UserDto(
-    idUser = this.idUser,
+fun Company.toDto() = CompanyDto(
+    idCompany = this.idCompany,
     loginDto = this.login.toDto(),
     name = this.name,
     email = this.email,
@@ -16,8 +16,8 @@ fun User.toDto() = UserDto(
     updatedBy = this.updatedBy
 )
 
-fun UserDto.toEntity() = User(
-    idUser = idUser,
+fun CompanyDto.toEntity() = Company(
+    idCompany = idCompany,
     login = this.loginDto?.toEntity()!!,
     name = this.name!!,
     email = this.email!!,

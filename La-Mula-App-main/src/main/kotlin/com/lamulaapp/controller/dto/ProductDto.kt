@@ -9,6 +9,7 @@ data class ProductDto(
     val name: String,
     val coffeeTypeDto: CoffeeTypeDto? = null,
     val attachmentDto: AttachmentDto,
+    val companyDto: CompanyDto,
     val description: String? = null,
     val unitCost: BigDecimal,
     val quantity: Int,

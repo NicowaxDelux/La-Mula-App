@@ -5,12 +5,12 @@ import java.time.LocalDateTime
 import java.util.*
 
 @Entity
-@Table(name = "users")
-data class User(
+@Table(name = "companies")
+data class Company (
     @Id
-    @Column(name = "id_user")
+    @Column(name = "id_company")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    val idUser: UUID? = null,
+    val idCompany: UUID? = null,
 
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_login", nullable = false)
@@ -34,5 +34,8 @@ data class User(
     val updatedAt: LocalDateTime? = null,
 
     @Column(name = "updated_by")
-    val updatedBy: String? = null
+    val updatedBy: String? = null,
+
+    @OneToMany(mappedBy = "company", cascade = [CascadeType.ALL], fetch = FetchType.LAZY)
+    val products: MutableSet<Product> = mutableSetOf()
 )

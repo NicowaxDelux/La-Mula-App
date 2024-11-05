@@ -16,30 +16,10 @@ class UserService(
     private val userRepository: UserRepository
 ){
     fun createUser(userDto: UserDto): UserDto {
-
         val foundById = userDto.idUser?.let { userRepository.findById(it) }
+
         if (foundById != null && foundById.isPresent){
             throw DuplicateKeyException("This ID already exists in database!.")
-        }
-
-        val foundByName = userRepository.findByName(userDto.name)
-        if (foundByName.isPresent){
-            throw DuplicateKeyException("The name: ${userDto.name} already exists in the database.")
-        }
-
-        val foundByEmail = userRepository.findByEmail(userDto.email)
-        if (foundByEmail.isPresent) {
-            throw DuplicateKeyException("The email already exists in the database.")
-        }
-
-        val foundByAddress = userRepository.findByAddress(userDto.address)
-        if (foundByAddress.isPresent) {
-            throw DuplicateKeyException("This address already in the database")
-        }
-
-        val foundByPhone = userRepository.findByPhone(userDto.phone)
-        if (foundByPhone.isPresent) {
-            throw DuplicateKeyException("This Phone already in the database")
         }
 
         val response = userRepository.save(userDto.toEntity())

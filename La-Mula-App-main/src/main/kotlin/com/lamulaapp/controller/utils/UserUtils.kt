@@ -5,15 +5,14 @@ import io.konform.validation.Validation
 import io.konform.validation.ValidationResult
 
 fun validateCreateUser(userDto: UserDto): ValidationResult<UserDto> {
-    val validationUser = Validation {
+    val validateUser = Validation {
+        UserDto::loginDto required {}
         UserDto::name required {}
         UserDto::email required {}
-        UserDto::address required {}
-        UserDto::phone required {}
         UserDto::createdAt required {}
         UserDto::createdBy required {}
     }
-    return validationUser(userDto)
+    return validateUser(userDto)
 }
 
 fun validateUpdateUser(userDto: UserDto): ValidationResult<UserDto> {

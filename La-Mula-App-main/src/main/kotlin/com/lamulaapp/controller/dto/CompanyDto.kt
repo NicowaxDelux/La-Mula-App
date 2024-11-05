@@ -1,10 +1,10 @@
 package com.lamulaapp.controller.dto
 
 import java.time.LocalDateTime
-import java.util.UUID
+import java.util.*
 
-data class UserDto(
-    val idUser: UUID? = null,
+data class CompanyDto(
+    val idCompany: UUID? = null,
     val loginDto: LoginDto? = null,
     val name: String? = null,
     val email: String? = null,

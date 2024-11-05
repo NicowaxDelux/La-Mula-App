@@ -18,9 +18,13 @@ data class Product(
     @JoinColumn(name = "id_coffee_type")
     val coffeeType: CoffeeType? = null,
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_attachment", nullable = false)
     val attachment: Attachment,
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "id_company", nullable = false)
+    val company: Company,
 
     val name: String,
 
