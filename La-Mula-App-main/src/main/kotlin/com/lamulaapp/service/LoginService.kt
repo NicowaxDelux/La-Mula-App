@@ -36,7 +36,7 @@ class LoginService(
             throw DuplicateKeyException("This ID already exists for the login to be created!")
         }
 
-        val response = loginRepository.save(loginDto.toEntity())
+        val response = loginRepository.saveAndFlush(loginDto.toEntity())
         return response.toDto()
     }
 

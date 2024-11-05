@@ -23,7 +23,7 @@ class CompanyService(
             throw DuplicateKeyException("There is a company with the given ID: $responsePKFound.")
         }
 
-        val response = companyRepository.save(companyDto.toEntity())
+        val response = companyRepository.saveAndFlush(companyDto.toEntity())
         return response.toDto()
     }
 
