@@ -15,10 +15,10 @@ fun OrderStatus.toDto() = OrderStatusDto(
 
 fun OrderStatusDto.toEntity() = OrderStatus(
     idOrderStatus = this.idOrderStatus,
-    typeStatus = this.typeStatus,
-    description = this.description,
-    createdAt = this.createdAt,
-    createdBy = this.createdBy,
+    typeStatus = this.typeStatus!!,
+    description = this.description!!,
+    createdAt = this.createdAt!!,
+    createdBy = this.createdBy!!,
     updatedAt = this.updatedAt,
     updatedBy = this.updatedBy
 )

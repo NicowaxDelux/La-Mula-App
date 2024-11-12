@@ -13,12 +13,16 @@ data class Order(
     @GeneratedValue( strategy = GenerationType.IDENTITY)
     val idOrder: UUID? = null,
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "id_user", nullable = false)
-    val user: User,
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "id_user")
+    val user: User? = null,
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "id_company")
+    val company: Company? = null,
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "id_oder_status", nullable = false)
+    @JoinColumn(name = "id_order_status", nullable = false)
     val orderStatus: OrderStatus,
 
     @Column(name = "order_code", unique = true, insertable = false, updatable = false)

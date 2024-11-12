@@ -17,12 +17,12 @@ fun OrderDetail.toDto() = OrderDetailDto(
 
 fun OrderDetailDto.toEntity() = OrderDetail(
     idOrderDetail = this.idOrderDetail,
-    order = this.orderDto.toEntity(),
-    product = this.productDto.toEntity(),
-    quantity = this.quantity,
-    unitCost = this.unitCost,
-    createdAt = this.createdAt,
-    createdBy = this.createdBy,
+    order = this.orderDto?.toEntity()!!,
+    product = this.productDto?.toEntity()!!,
+    quantity = this.quantity!!,
+    unitCost = this.unitCost!!,
+    createdAt = this.createdAt!!,
+    createdBy = this.createdBy!!,
     updatedAt = this.updatedAt,
     updatedBy = this.updatedBy
 )

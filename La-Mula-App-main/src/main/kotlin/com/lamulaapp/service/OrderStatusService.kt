@@ -22,7 +22,7 @@ class OrderStatusService(
                         throw DuplicateKeyException("The ID already exist in the database.")
                 }
 
-                val findByType = orderStatusRepository.findByTypeStatus(orderStatusDto.typeStatus)
+                val findByType = orderStatusRepository.findByTypeStatus(orderStatusDto.typeStatus!!)
 
                 if (findByType.isPresent) {
                         throw DuplicateKeyException("The type: ${orderStatusDto.typeStatus} already exist.")

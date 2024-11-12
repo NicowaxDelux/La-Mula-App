@@ -15,10 +15,10 @@ fun CoffeeType.toDto() = CoffeeTypeDto(
 
 fun CoffeeTypeDto.toEntity() = CoffeeType(
     idCoffeeType = this.idCoffeeType,
-    name = this.name,
-    description = this.description,
-    createdAt = this.createdAt,
-    createdBy = this.createdBy,
+    name = this.name!!,
+    description = this.description!!,
+    createdAt = this.createdAt!!,
+    createdBy = this.createdBy!!,
     updatedAt = this.updatedAt,
     updatedBy = this.updatedBy
 )

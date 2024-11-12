@@ -7,6 +7,8 @@ import com.lamulaapp.exception.DuplicateKeyException
 import com.lamulaapp.exception.KeysAreDifferentException
 import com.lamulaapp.repository.ProductRepository
 import jakarta.persistence.EntityNotFoundException
+import org.springframework.data.domain.PageRequest
+import org.springframework.data.domain.Slice
 import org.springframework.stereotype.Service
 import java.time.LocalDateTime
 import java.util.*
@@ -28,6 +30,11 @@ class ProductService(
 
     fun getProducts(): List<ProductDto> {
         return productRepository.findAll().map { it.toDto() }
+    }
+
+    fun getProductsWithPagination(pageNumber: Int, pageSize: Int): Slice<ProductDto> {
+        val pageable = PageRequest.of(pageNumber, pageSize)
+        return productRepository.findAll(pageable).map { it.toDto() }
     }
 
     fun getProductById(id: UUID): ProductDto? {
