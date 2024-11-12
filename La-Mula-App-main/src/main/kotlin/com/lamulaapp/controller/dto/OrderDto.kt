@@ -6,12 +6,13 @@ import java.util.UUID
 
 data class OrderDto(
     val idOrder: UUID? = null,
-    val userDto: UserDto,
-    val orderStatusDto: OrderStatusDto,
+    val userDto: UserDto? = null,
+    val companyDto: CompanyDto? = null,
+    val orderStatusDto: OrderStatusDto? = null,
     val orderCode: Long? = null,
-    val totalCost: BigDecimal,
-    val createdAt: LocalDateTime,
-    val createdBy: String,
+    val totalCost: BigDecimal? = null,
+    val createdAt: LocalDateTime? = null,
+    val createdBy: String? = null,
     val updatedAt: LocalDateTime? = null,
     val updatedBy: String? = null
 )

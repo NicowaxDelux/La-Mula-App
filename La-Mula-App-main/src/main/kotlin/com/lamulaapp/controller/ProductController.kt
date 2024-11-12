@@ -2,10 +2,11 @@ package com.lamulaapp.controller
 
 import com.lamulaapp.controller.dto.ProductDto
 import com.lamulaapp.service.ProductService
+import org.springframework.data.domain.Slice
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*
-import java.util.UUID
+import java.util.*
 
 @RestController
 class ProductController (
@@ -19,6 +20,11 @@ class ProductController (
     @GetMapping("/products")
     fun getProducts(): ResponseEntity<List<ProductDto>> {
         return ResponseEntity(productService.getProducts(),HttpStatus.OK)
+    }
+
+    @GetMapping("/products2")
+    fun getProductsWithPagination(@RequestParam pageNumber: Int? = 0, @RequestParam pageSize: Int? = 10): ResponseEntity<Slice<ProductDto>> {
+        return ResponseEntity(productService.getProductsWithPagination(pageNumber!!, pageSize!!),HttpStatus.OK)
     }
 
     @GetMapping("/products/{id}")

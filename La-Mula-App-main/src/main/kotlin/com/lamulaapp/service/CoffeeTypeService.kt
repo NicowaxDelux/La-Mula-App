@@ -23,7 +23,7 @@ class CoffeeTypeService(
             throw DuplicateKeyException("This ID already exists for the coffee-type to be created!")
         }
 
-        val responseNameFound = coffeeTypeRepository.findByName(coffeeTypeDto.name)
+        val responseNameFound = coffeeTypeRepository.findByName(coffeeTypeDto.name!!)
 
         if (responseNameFound.isPresent) {
             throw DuplicateKeyException("The name: ${coffeeTypeDto.name} already exists for the coffee-type to be created!")

@@ -59,7 +59,8 @@ CREATE TABLE order_statuses (
 
 CREATE TABLE orders (
     id_order UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
-    id_user UUID NOT NULL REFERENCES users(id_user),
+    id_user UUID REFERENCES users(id_user),
+    id_company UUID REFERENCES companies(id_company),
     id_order_status UUID NOT NULL REFERENCES order_statuses(id_order_status),
     order_code SERIAL UNIQUE NOT NULL,
     total_cost NUMERIC(8, 4) NOT NULL,
@@ -98,7 +99,7 @@ CREATE TABLE products (
     name CHARACTER VARYING NOT NULL,
     description CHARACTER VARYING NOT NULL,
     unit_cost NUMERIC(8, 4) NOT NULL,
-    quantity INTEGER NOT NULL DEFAULT 0,
+    stock INTEGER NOT NULL DEFAULT 0,
     package_size CHARACTER VARYING NOT NULL,
     created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
     created_by CHARACTER VARYING NOT NULL DEFAULT 'SYSTEM',
@@ -106,7 +107,7 @@ CREATE TABLE products (
     updated_by CHARACTER VARYING
 );
 
-CREATE TABLE oder_details (
+CREATE TABLE order_details (
     id_order_detail UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
     id_order UUID NOT NULL REFERENCES orders(id_order),
     id_product UUID NOT NULL REFERENCES products(id_product),

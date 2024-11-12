@@ -19,7 +19,8 @@ class ErrorController {
         EntityNotFoundException::class,
         KeysAreDifferentException::class,
         IllegalArgumentException::class,
-        LoginNotFoundException::class
+        LoginNotFoundException::class,
+        EntityNotFoundException::class
     )
     fun handleException(e: Exception): ResponseEntity<ResponseErrorDto> {
         val response = ResponseErrorDto(

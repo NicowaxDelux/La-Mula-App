@@ -33,7 +33,7 @@ data class Product(
     @Column(name = "unit_cost", nullable = false)
     val unitCost: BigDecimal,
 
-    val quantity: Int,
+    val stock: Int,
 
     @Column(name = "package_size", nullable = false)
     val packageSize: String,

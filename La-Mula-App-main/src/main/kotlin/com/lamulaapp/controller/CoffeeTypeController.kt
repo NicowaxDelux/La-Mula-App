@@ -1,6 +1,9 @@
 package com.lamulaapp.controller
 
 import com.lamulaapp.controller.dto.CoffeeTypeDto
+import com.lamulaapp.controller.utils.validateCreateCoffeeType
+import com.lamulaapp.controller.utils.validateUpdateCoffeeType
+import com.lamulaapp.exception.ValidationErrorsException
 import com.lamulaapp.service.CoffeeTypeService
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
@@ -13,6 +16,12 @@ class CoffeeTypeController(
 ){
     @PostMapping("/coffee-types")
     fun createCoffeeType(@RequestBody coffeeTypeDto: CoffeeTypeDto): ResponseEntity<CoffeeTypeDto> {
+        val validation = validateCreateCoffeeType(coffeeTypeDto)
+
+        if (!validation.isValid) {
+            throw ValidationErrorsException(validation.errors)
+        }
+
         return ResponseEntity(coffeeTypeService.createCoffeeType(coffeeTypeDto), HttpStatus.CREATED)
     }
 
@@ -28,7 +37,16 @@ class CoffeeTypeController(
     }
 
     @PutMapping("/coffee-types/{id}")
-    fun updateCoffeeType(@PathVariable("id") id: UUID, @RequestBody coffeeTypeDto: CoffeeTypeDto): ResponseEntity<CoffeeTypeDto> {
+    fun updateCoffeeType(
+        @PathVariable("id") id: UUID,
+        @RequestBody coffeeTypeDto: CoffeeTypeDto
+    ): ResponseEntity<CoffeeTypeDto> {
+        val validation = validateUpdateCoffeeType(coffeeTypeDto)
+
+        if (!validation.isValid) {
+            throw ValidationErrorsException(validation.errors)
+        }
+
         val coffeeType = coffeeTypeService.updateCoffeeType(id, coffeeTypeDto)
         return ResponseEntity(coffeeType, HttpStatus.OK)
     }

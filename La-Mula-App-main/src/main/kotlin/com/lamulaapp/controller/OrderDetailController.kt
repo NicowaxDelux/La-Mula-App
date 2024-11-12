@@ -41,7 +41,7 @@ class OrderDetailController(
     fun updateOrderDetail(@PathVariable("id") id: UUID, @RequestBody orderDetailDto: OrderDetailDto): ResponseEntity<OrderDetailDto> {
         val validate = validateUpdateOrderDetail(orderDetailDto)
 
-        if(!validate.isValid) {
+        if (!validate.isValid) {
             throw ValidationErrorsException(validate.errors)
         }
 
