@@ -1,5 +1,5 @@
 # Use Amazon Corretto 21 as the base image
-FROM alpine/java:21-jdk
+FROM amazoncorretto:21
 
 # Set the working directory
 WORKDIR /app
