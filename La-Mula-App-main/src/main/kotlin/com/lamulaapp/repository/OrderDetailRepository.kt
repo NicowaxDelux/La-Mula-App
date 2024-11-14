@@ -7,5 +7,5 @@ import java.util.*
 
 @Repository
 interface OrderDetailRepository : JpaRepository<OrderDetail, UUID> {
-    fun findAllByOrder_IdOrder(orderId: UUID): Optional<List<OrderDetail>>
+    fun findAllByOrder_IdOrder(idOrder: UUID): Optional<List<OrderDetail>>
 }

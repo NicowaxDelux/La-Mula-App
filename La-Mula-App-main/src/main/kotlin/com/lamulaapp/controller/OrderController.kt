@@ -37,10 +37,9 @@ class OrderController(
     }
 
     @GetMapping("/orders/{id}/details")
-    fun getOrderDetailsByOrderId(@PathVariable("id") id:UUID): ResponseEntity<List<ProductDto>> {
+    fun getOrderDetailsByOrderId(@PathVariable("id") id: UUID): ResponseEntity<List<ProductDto>> {
         return ResponseEntity(orderService.getProductsByOrderId(id), HttpStatus.OK)
     }
-
 
     @PutMapping("/orders/{id}")
     fun updateOrder(@PathVariable("id") id: UUID, @RequestBody orderDto: OrderDto): ResponseEntity<OrderDto> {
