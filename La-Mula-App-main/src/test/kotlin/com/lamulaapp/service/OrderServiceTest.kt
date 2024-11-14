@@ -2,7 +2,9 @@ package com.lamulaapp.service
 
 import com.lamulaapp.controller.mapper.toEntity
 import com.lamulaapp.datamock.getOrderWithUserDto
+import com.lamulaapp.datamock.getProduct1
 import com.lamulaapp.exception.DuplicateKeyException
+import com.lamulaapp.repository.OrderDetailRepository
 import com.lamulaapp.repository.OrderRepository
 import io.mockk.every
 import io.mockk.mockk
@@ -15,7 +17,8 @@ import kotlin.test.assertEquals
 class OrderServiceTest {
 
     private val orderRepositoryMock = mockk<OrderRepository>()
-    private val orderService = OrderService(orderRepositoryMock)
+    private val orderDetailRepositoryMock = mockk<OrderDetailRepository>()
+    private val orderService = OrderService(orderRepositoryMock, orderDetailRepositoryMock)
 
     companion object {
         val orderUserDto = getOrderWithUserDto()
@@ -58,5 +61,18 @@ class OrderServiceTest {
         // Then
         assertEquals(listOf(orderUserDto), result)
         verify(exactly = 1) { orderRepositoryMock.findAll() }
+    }
+
+    @Test
+    fun `should get all products associated to an order successfully`() {
+        // Given
+        every { orderDetailRepositoryMock.findAllByOrder_IdOrder(any()) } returns Optional.empty()
+
+        // When
+        val result = orderService.getProductsByOrderId(UUID.randomUUID())
+
+        // Then
+        assertEquals(emptyList(), result)
+        verify(exactly = 1) { orderDetailRepositoryMock.findAllByOrder_IdOrder(any()) }
     }
 }

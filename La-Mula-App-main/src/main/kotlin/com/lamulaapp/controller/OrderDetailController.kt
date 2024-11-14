@@ -1,11 +1,10 @@
 package com.lamulaapp.controller
 
 import com.lamulaapp.controller.dto.OrderDetailDto
-import com.lamulaapp.service.OrderDetailService
 import com.lamulaapp.controller.utils.validateCreateOrderDetail
 import com.lamulaapp.controller.utils.validateUpdateOrderDetail
 import com.lamulaapp.exception.ValidationErrorsException
-import org.flywaydb.core.internal.util.IOUtils
+import com.lamulaapp.service.OrderDetailService
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*
@@ -52,5 +51,4 @@ class OrderDetailController(
     fun deleteOrderDetail(@PathVariable("id") id: UUID): ResponseEntity<Unit> {
         return ResponseEntity(orderDetailService.deleteOrderDetail(id), HttpStatus.NO_CONTENT)
     }
-
 }
