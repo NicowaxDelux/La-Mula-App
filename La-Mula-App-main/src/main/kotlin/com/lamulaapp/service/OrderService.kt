@@ -1,15 +1,14 @@
 package com.lamulaapp.service
 
 
-import com.lamulaapp.controller.dto.OrderDetailDto
 import com.lamulaapp.controller.dto.OrderDto
 import com.lamulaapp.controller.dto.ProductDto
-import com.lamulaapp.repository.OrderRepository
 import com.lamulaapp.controller.mapper.toDto
 import com.lamulaapp.controller.mapper.toEntity
 import com.lamulaapp.exception.DuplicateKeyException
 import com.lamulaapp.exception.KeysAreDifferentException
 import com.lamulaapp.repository.OrderDetailRepository
+import com.lamulaapp.repository.OrderRepository
 import jakarta.persistence.EntityNotFoundException
 import org.springframework.stereotype.Service
 import java.time.LocalDateTime
@@ -74,8 +73,8 @@ class OrderService (
         orderRepository.deleteById(id)
     }
 
-    fun getProductsByOrderId(orderId: UUID): List<ProductDto> {
-        val response = orderDetailRepository.findAllByOrder_IdOrder(orderId)
+    fun getProductsByOrderId(idOrder: UUID): List<ProductDto> {
+        val response = orderDetailRepository.findAllByOrder_IdOrder(idOrder)
 
         if (response.isPresent) {
             return response.get().map { it.product.toDto() }

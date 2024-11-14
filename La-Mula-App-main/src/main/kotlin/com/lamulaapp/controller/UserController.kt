@@ -1,5 +1,6 @@
 package com.lamulaapp.controller
 
+import com.lamulaapp.controller.dto.OrderDto
 import com.lamulaapp.controller.dto.UserDto
 import com.lamulaapp.controller.utils.validateCreateUser
 import com.lamulaapp.controller.utils.validateUpdateUser
@@ -33,6 +34,14 @@ class UserController(
     @GetMapping("/users/{id}")
     fun getUserById(@PathVariable("id") id: UUID): ResponseEntity<UserDto> {
         return ResponseEntity(userService.getUserById(id), HttpStatus.OK)
+    }
+
+    @GetMapping("/users/{id}/orders")
+    fun findAllByUserId(
+        @PathVariable("id") id: UUID,
+        @RequestParam("limit") limit: Int = 10,
+    ): ResponseEntity<List<OrderDto>> {
+        return ResponseEntity(userService.findOrdersByUserId(id, limit), HttpStatus.OK)
     }
 
     @PutMapping("/users/{id}")
