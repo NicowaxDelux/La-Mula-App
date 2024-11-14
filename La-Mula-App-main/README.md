@@ -42,7 +42,7 @@ Para ejecutar la app, es necesario tener instalada al menos la versión 27.2.0 d
 Antes de ejecutar los contenedores, asegúrate de compilar el proyecto en la terminal con Gradle:
 
 ```
-$ ./gradlew clean && ./gradlew bootJar
+$ ./gradlew clean && ./gradlew build
 ```
 
 Luego, inicia Docker Compose con el siguiente comando en la terminal:
