@@ -1,10 +1,11 @@
 package com.lamulaapp.controller
 
 import com.lamulaapp.controller.dto.OrderDto
+import com.lamulaapp.controller.dto.ProductDto
 import com.lamulaapp.controller.utils.validateCreateOrder
 import com.lamulaapp.controller.utils.validateUpdateOrder
-import com.lamulaapp.service.OrderService
 import com.lamulaapp.exception.ValidationErrorsException
+import com.lamulaapp.service.OrderService
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*
@@ -34,6 +35,12 @@ class OrderController(
     fun getOrderById(@PathVariable("id") id:UUID): ResponseEntity<OrderDto> {
         return ResponseEntity(orderService.getOrderId(id), HttpStatus.OK)
     }
+
+    @GetMapping("/orders/{id}/details")
+    fun getOrderDetailsByOrderId(@PathVariable("id") id:UUID): ResponseEntity<List<ProductDto>> {
+        return ResponseEntity(orderService.getProductsByOrderId(id), HttpStatus.OK)
+    }
+
 
     @PutMapping("/orders/{id}")
     fun updateOrder(@PathVariable("id") id: UUID, @RequestBody orderDto: OrderDto): ResponseEntity<OrderDto> {
