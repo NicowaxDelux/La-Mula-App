@@ -6,6 +6,7 @@ import org.springframework.data.domain.Slice
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*
+import org.springframework.web.multipart.MultipartFile
 import java.util.*
 
 @RestController
@@ -42,5 +43,15 @@ class ProductController (
     @DeleteMapping("/products/{id}")
     fun deleteProduct(@PathVariable("id") id: UUID): ResponseEntity<Unit> {
         return ResponseEntity(productService.deleteProduct(id), HttpStatus.NO_CONTENT)
+    }
+
+    @PostMapping("/products/upload")
+    fun uploadProducts(@RequestParam file: MultipartFile): ResponseEntity<String> {
+        if (file.isEmpty) {
+            return ResponseEntity("File is empty!", HttpStatus.BAD_REQUEST)
+        }
+
+        val productsCreatedCount = productService.uploadProducts(file)
+        return ResponseEntity("File uploaded: $productsCreatedCount products were created successfully!", HttpStatus.CREATED)
     }
 }

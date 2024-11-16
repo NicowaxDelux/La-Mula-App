@@ -27,6 +27,7 @@ dependencies {
     implementation("org.flywaydb:flyway-database-postgresql")
     implementation("org.jetbrains.kotlin:kotlin-reflect")
     implementation("io.konform:konform-jvm:0.7.0")
+    implementation("org.apache.poi:poi-ooxml:5.3.0")
 
     developmentOnly("org.springframework.boot:spring-boot-devtools")
     runtimeOnly("org.postgresql:postgresql")
