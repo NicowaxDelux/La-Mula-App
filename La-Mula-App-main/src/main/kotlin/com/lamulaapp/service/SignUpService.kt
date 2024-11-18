@@ -5,17 +5,16 @@ import com.lamulaapp.controller.dto.SignUpResponseDto
 import com.lamulaapp.domain.Company
 import com.lamulaapp.domain.Login
 import com.lamulaapp.domain.User
+import com.lamulaapp.domain.enums.RolesEnum
 import com.lamulaapp.exception.DuplicateKeyException
 import com.lamulaapp.repository.CompanyRepository
 import com.lamulaapp.repository.LoginRepository
-import com.lamulaapp.repository.RoleRepository
 import com.lamulaapp.repository.UserRepository
 import org.springframework.stereotype.Service
 import java.time.LocalDateTime
 
 @Service
 class SignUpService(
-    private val roleRepository: RoleRepository,
     private val loginRepository: LoginRepository,
     private val companyRepository: CompanyRepository,
     private  val userRepository: UserRepository
@@ -28,9 +27,8 @@ class SignUpService(
     }
 
     fun singUp(signUpRequestDto: SignUpRequestDto): SignUpResponseDto {
-        val roleEntity = roleRepository.findByName(signUpRequestDto.roleName!!.uppercase()).get()
         val loginEntity = Login(
-            role = roleEntity,
+            role = RolesEnum.valueOf(signUpRequestDto.roleName!!),
             username = signUpRequestDto.email!!,
             password = signUpRequestDto.password!!,
             createdAt = LocalDateTime.now(),
@@ -45,7 +43,7 @@ class SignUpService(
 
         lateinit var signUpResponseDto: SignUpResponseDto
 
-        if (roleEntity.name == ROLE_CLIENT) {
+        if (signUpRequestDto.roleName == ROLE_CLIENT) {
             val userEntity = User(
                 login = loginEntity,
                 name = signUpRequestDto.name!!,
@@ -65,7 +63,7 @@ class SignUpService(
             )
         }
 
-        if (roleEntity.name == ROLE_SELLER) {
+        if (signUpRequestDto.roleName == ROLE_SELLER) {
             val companyEntity = Company(
                 login = loginEntity,
                 name = signUpRequestDto.name!!,

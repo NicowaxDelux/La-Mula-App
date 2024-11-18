@@ -6,7 +6,6 @@ import com.lamulaapp.controller.mapper.toEntity
 import com.lamulaapp.exception.DuplicateKeyException
 import com.lamulaapp.exception.KeysAreDifferentException
 import com.lamulaapp.repository.CompanyRepository
-import com.lamulaapp.service.LoginServiceTest.Companion.roleDto
 import io.mockk.*
 import jakarta.persistence.EntityNotFoundException
 import org.junit.jupiter.api.Test
@@ -23,7 +22,7 @@ class CompanyServiceTest {
     companion object {
         val loginDto = LoginDto(
             idLogin = UUID.randomUUID(),
-            roleDto = roleDto,
+            role = "SELLER",
             username = "plural.coffee@example.com",
             password = "123456",
             createdAt = LocalDateTime.now(),
