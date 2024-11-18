@@ -2,10 +2,11 @@ package com.lamulaapp.controller.mapper
 
 import com.lamulaapp.domain.Login
 import com.lamulaapp.controller.dto.LoginDto
+import com.lamulaapp.domain.enums.RolesEnum
 
 fun Login.toDto(): LoginDto = LoginDto(
     idLogin = this.idLogin,
-    roleDto = this.role.toDto(),
+    role = this.role.name,
     username = this.username,
     password = this.password,
     createdAt = this.createdAt,
@@ -16,7 +17,7 @@ fun Login.toDto(): LoginDto = LoginDto(
 
 fun LoginDto.toEntity(): Login = Login(
     idLogin = this.idLogin,
-    role = this.roleDto?.toEntity()!!,
+    role = RolesEnum.valueOf(this.role!!),
     username = this.username!!,
     password = this.password!!,
     createdAt = this.createdAt!!,

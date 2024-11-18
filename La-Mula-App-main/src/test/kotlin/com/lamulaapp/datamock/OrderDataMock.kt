@@ -12,17 +12,9 @@ fun getOrderStatusInProgress() = OrderStatusDto(
     createdBy = "SYSTEM",
 )
 
-fun getRoleDto() = RoleDto(
-    idRole = UUID.fromString("964c8c4f-2407-45f3-884c-4c87371ce881"),
-    name = "CLIENT",
-    description = "CLIENT",
-    createdAt = LocalDateTime.parse("2024-11-11T20:35:00"),
-    createdBy = "SYSTEM",
-)
-
 fun getLoginDto() = LoginDto(
     idLogin = UUID.fromString("1bf8c577-5e2a-4d8d-a785-5dc1984ab51a"),
-    roleDto = getRoleDto(),
+    role = "CLIENT",
     username = "john.doe@example.com",
     password = "password",
     createdAt = LocalDateTime.parse("2024-11-11T20:35:00"),

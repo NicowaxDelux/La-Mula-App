@@ -1,7 +1,3 @@
-INSERT INTO roles (id_role, name, description) VALUES ('44aa77eb-c9e9-40ec-8325-d281552bb7a7', 'CLIENT', 'Es la persona que realiza las compras en APP') ON CONFLICT DO NOTHING;
-INSERT INTO roles (id_role, name, description) VALUES ('7da73dec-6bf2-4d2f-98d6-8b406fccfa5a', 'SELLER', 'Es la persona que realiza las ventas en el sistema') ON CONFLICT DO NOTHING;
-INSERT INTO roles (id_role, name, description) VALUES ('e5f0a0b6-55d0-4e84-bc0d-af1be6b0d405', 'ADMIN', 'Es la persona que realiza tareas de administración en el sistema') ON CONFLICT DO NOTHING;
-
 INSERT INTO order_statuses (type_status, description) VALUES ('IN_PROGRESS', 'Estado inicial de la orden') ON CONFLICT DO NOTHING;
 INSERT INTO order_statuses (type_status, description) VALUES ('SENT', 'Productos enviados al cliente') ON CONFLICT DO NOTHING;
 INSERT INTO order_statuses (type_status, description) VALUES ('DELIVERED', 'Productos entregados al cliente') ON CONFLICT DO NOTHING;
