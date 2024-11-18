@@ -8,7 +8,7 @@ import io.konform.validation.jsonschema.minLength
 
 fun validateCreateLogin(loginDto: LoginDto): ValidationResult<LoginDto> {
     val validateLogin = Validation {
-        LoginDto::roleDto required {}
+        LoginDto::role required {}
         LoginDto::username required {
             minLength(3)
         }
@@ -16,7 +16,7 @@ fun validateCreateLogin(loginDto: LoginDto): ValidationResult<LoginDto> {
             minLength(6)
             maxLength(20)
         }
-        LoginDto::roleDto required {}
+        LoginDto::role required {}
         LoginDto::createdAt required {}
         LoginDto::createdBy required {}
     }

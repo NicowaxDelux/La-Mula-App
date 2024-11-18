@@ -2,7 +2,6 @@ package com.lamulaapp.service
 
 import com.lamulaapp.controller.dto.LoginDto
 import com.lamulaapp.controller.dto.LoginResponseDto
-import com.lamulaapp.controller.dto.RoleDto
 import com.lamulaapp.controller.mapper.toEntity
 import com.lamulaapp.exception.DuplicateKeyException
 import com.lamulaapp.exception.LoginNotFoundException
@@ -21,18 +20,10 @@ class LoginServiceTest {
     private val loginService = LoginService(loginRepositoryMock)
 
     companion object {
-        val roleDto = RoleDto(
-            idRole = UUID.randomUUID(),
-            name = "SELLER",
-            description = "Role for sellers",
-            createdAt = LocalDateTime.now(),
-            createdBy = "SYSTEM"
-        )
-
         val idLogin: UUID = UUID.randomUUID()
         val loginDto = LoginDto(
             idLogin = idLogin,
-            roleDto = roleDto,
+            role = "CLIENT",
             username = "example@test.com",
             password = "123456",
             createdAt = LocalDateTime.now(),

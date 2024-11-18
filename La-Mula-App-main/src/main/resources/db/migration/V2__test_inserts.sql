@@ -1,17 +1,17 @@
-INSERT INTO logins (id_login, id_role, username, password, created_at, created_by)
+INSERT INTO logins (id_login, role, username, password, created_at, created_by)
 VALUES (
    '74fb58d4-c1c5-407a-80c7-371df8fd43a5',
-   '44aa77eb-c9e9-40ec-8325-d281552bb7a7',
+   'CLIENT',
    'vanessa.porras@gmail.com',
    '123456',
    '2024-11-07T23:56:00',
    'SYSTEM'
 );
 
-INSERT INTO logins (id_login, id_role, username, password, created_at, created_by)
+INSERT INTO logins (id_login, role, username, password, created_at, created_by)
 VALUES (
     '6316b307-2b6a-448b-9d90-cd56ffbb491e',
-    '7da73dec-6bf2-4d2f-98d6-8b406fccfa5a',
+    'SELLER',
     'plural.coffee@coffee.com',
     '123456',
     '2024-11-07T23:56:00',

@@ -1,5 +1,6 @@
 package com.lamulaapp.domain
 
+import com.lamulaapp.domain.enums.RolesEnum
 import jakarta.persistence.*
 import java.time.LocalDateTime
 import java.util.*
@@ -12,9 +13,8 @@ data class Login(
     @GeneratedValue (strategy = GenerationType.IDENTITY)
     val idLogin: UUID? = null,
 
-    @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "id_role", nullable = false)
-    val role: Role,
+    @Enumerated(EnumType.STRING)
+    val role: RolesEnum,
 
     @Column(unique = true)
     val username: String,
