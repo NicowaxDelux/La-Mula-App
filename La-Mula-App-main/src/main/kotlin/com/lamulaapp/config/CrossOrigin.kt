@@ -20,11 +20,3 @@ class CrossOriginConfig {
         }
     }
 }
-
-//@Configuration
-//class CrossOriginConfig : WebMvcConfigurer {
-//    override fun addCorsMappings(registry: CorsRegistry) {
-//        registry.addMapping("/**")
-//            .allowedMethods("GET", "POST", "PUT", "DELETE")
-//    }
-//}
