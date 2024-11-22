@@ -18,6 +18,8 @@ data class Attachment(
     @Column(columnDefinition = "bytea", nullable = false)
     val content: ByteArray,
 
+    val url: String? = null,
+
     @Column(name = "content_type", nullable = false)
     val contentType: String,
 
