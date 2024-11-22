@@ -15,7 +15,7 @@ class CrossOriginConfig {
             override fun addCorsMappings(registry: CorsRegistry) {
                 registry.addMapping("/**")
                     .allowedOrigins("*")
-                    .allowedMethods("POST")
+                    .allowedMethods("GET", "POST", "PUT", "DELETE")
             }
         }
     }
