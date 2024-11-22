@@ -74,6 +74,7 @@ CREATE TABLE attachments (
      id_attachment UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
      name CHARACTER VARYING NOT NULL,
      content BYTEA NOT NULL,
+     url CHARACTER VARYING,
      content_type CHARACTER VARYING NOT NULL,
      created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
      created_by CHARACTER VARYING NOT NULL DEFAULT 'SYSTEM',
