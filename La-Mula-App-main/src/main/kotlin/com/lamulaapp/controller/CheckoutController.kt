@@ -5,6 +5,7 @@ import com.lamulaapp.controller.dto.CheckoutResponseDto
 import com.lamulaapp.controller.utils.validateCheckout
 import com.lamulaapp.exception.ValidationErrorsException
 import com.lamulaapp.service.CheckoutService
+import io.swagger.v3.oas.annotations.Operation
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.PostMapping
@@ -17,6 +18,10 @@ class CheckoutController(
 ) {
 
     @PostMapping("/checkout")
+    @Operation(
+        summary = "agrega todos los productos a comprar en una lista",
+        description = "Este endpoint permite listar todos los productos con detalles, como el nombre del producto, el costo unitario y la cantidad que el usuario va a ordenar."
+    )
     fun checkout(@RequestBody checkoutRequestDto: CheckoutRequestDto): ResponseEntity<CheckoutResponseDto> {
         val validation = validateCheckout(checkoutRequestDto)
 
