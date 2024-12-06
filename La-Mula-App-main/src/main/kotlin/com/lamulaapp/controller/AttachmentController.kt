@@ -18,8 +18,8 @@ class AttachmentController(
 
     @PostMapping("/attachments")
     @Operation(
-        summary = "Crea un nuevo adjunto",
-        description = "Este endpoint permite crear un nuevo adjunto en el sistema."
+        summary = "Create a new attachment",
+        description = "This endpoint allows you to create a new attachment in the system."
     )
     fun createAttachment(@RequestBody attachmentDto: AttachmentDto): ResponseEntity<AttachmentDto> {
         val validation = validateCreateAttachment(attachmentDto)
@@ -33,19 +33,27 @@ class AttachmentController(
 
     @GetMapping("/attachments")
     @Operation(
-        summary = "Lista todos los adjunto",
-        description = "Este endpoint permite listar todos los adjuntos de la base de datos."
+        summary = "List all attachments",
+        description = "This endpoint allows listing all attachments from the database."
     )
     fun getAttachments(): ResponseEntity<List<AttachmentDto>> {
         return ResponseEntity(attachmentService.getAttachments(), HttpStatus.OK)
     }
 
     @GetMapping("/attachments/{id}")
+    @Operation(
+        summary = "List an attachment by ID",
+        description = "This endpoint searches the database for the attachment and lists it by id."
+    )
     fun getAttachmentById(@PathVariable("id") id: UUID): ResponseEntity<AttachmentDto> {
         return ResponseEntity(attachmentService.getAttachmentById(id), HttpStatus.OK)
     }
 
     @PutMapping("/attachments/{id}")
+    @Operation(
+        summary = "Update the attachments",
+        description = "This endpoint searches the database for the attachment by ID and updates it."
+    )
     fun updateAttachment(@PathVariable("id") id: UUID, @RequestBody attachmentDto: AttachmentDto): ResponseEntity<AttachmentDto> {
         val validation = validateUpdateAttachment(attachmentDto)
 
@@ -57,6 +65,10 @@ class AttachmentController(
     }
 
     @DeleteMapping("/attachments/{id}")
+    @Operation(
+        summary = "Delete the attachment",
+        description = "This endpoint searches the database for the attachment by ID and deletes it."
+    )
     fun deleteAttachment(@PathVariable("id") id: UUID): ResponseEntity<Unit> {
         return ResponseEntity(attachmentService.deleteAttachment(id), HttpStatus.NO_CONTENT)
     }
