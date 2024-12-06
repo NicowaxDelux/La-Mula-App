@@ -19,8 +19,8 @@ class SignUpController(
 
     @PostMapping("/signup")
     @Operation(
-        summary = "Permite crear un usuario",
-        description = "Crea un usuario y lo almacena en la base de datos."
+        summary = "Allows creating a user",
+        description = "Creates a user and stores it in the database."
     )
     fun signUp(@RequestBody signUpRequestDto: SignUpRequestDto): ResponseEntity<SignUpResponseDto> {
         val validation = validateSignUp(signUpRequestDto)

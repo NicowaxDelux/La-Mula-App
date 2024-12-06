@@ -19,8 +19,8 @@ class CheckoutController(
 
     @PostMapping("/checkout")
     @Operation(
-        summary = "agrega todos los productos a comprar en una lista",
-        description = "Este endpoint permite listar todos los productos con detalles, como el nombre del producto, el costo unitario y la cantidad que el usuario va a ordenar."
+        summary = "Add all products to purchase in a list",
+        description = "This endpoint allows listing all products with details, such as the product name, unit cost, and the quantity the user wants to order."
     )
     fun checkout(@RequestBody checkoutRequestDto: CheckoutRequestDto): ResponseEntity<CheckoutResponseDto> {
         val validation = validateCheckout(checkoutRequestDto)

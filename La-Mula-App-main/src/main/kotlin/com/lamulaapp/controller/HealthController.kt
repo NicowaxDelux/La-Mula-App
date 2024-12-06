@@ -11,8 +11,8 @@ class HealthController {
 
     @GetMapping("/health")
     @Operation(
-        summary = "Verifica el estado de la aplicacion",
-        description = "Su estado de respuesta debe ser OK"
+        summary = "Check the application status",
+        description = "Its response status should be OK"
     )
     fun checkStatus(): ResponseEntity<String> {
         return ResponseEntity("OK", HttpStatus.OK)
